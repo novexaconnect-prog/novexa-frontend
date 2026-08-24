@@ -5,64 +5,13 @@
   ].filter(([button]) => button);
   const msg = document.getElementById('paymentMessage');
   const banner = document.getElementById('trialBanner');
-  const apiBase = ((location.hostname === 'localhost' || location.hostname === '127.0.0.1') && location.port !== '3000') ? 'http://localhost:3000' : '';
-
-  const termsModal = document.getElementById('termsModal');
-  const termsAgreement = document.getElementById('termsAgreement');
-  const termsProceed = document.getElementById('termsProceed');
-  const termsCloseButtons = [...document.querySelectorAll('[data-terms-close]')];
-  const termsCancel = document.getElementById('termsCancel');
-  let pendingCheckout = null;
+  const apiBase = ((location.hostname === 'localhost' || location.hostname === '127.0.0.1') && location.port !== '3000') ? 'http://localhost:3000' : 'https://novexa-backend-lkon.onrender.com';
   const show = (text, type = 'info') => {
     if (!msg) return;
     msg.hidden = false;
     msg.className = `payment-message ${type}`;
     msg.textContent = text;
   };
-
-  function closeTermsModal() {
-    if (!termsModal) return;
-    termsModal.hidden = true;
-    termsModal.setAttribute('aria-hidden', 'true');
-    if (termsAgreement) termsAgreement.checked = false;
-    if (termsProceed) termsProceed.disabled = true;
-    pendingCheckout = null;
-    document.body.classList.remove('terms-modal-open');
-  }
-
-  function openTermsModal(button, interval) {
-    if (!termsModal) {
-      paypalCheckout(button, interval);
-      return;
-    }
-    pendingCheckout = { button, interval };
-    if (termsAgreement) termsAgreement.checked = false;
-    if (termsProceed) termsProceed.disabled = true;
-    termsModal.hidden = false;
-    termsModal.setAttribute('aria-hidden', 'false');
-    document.body.classList.add('terms-modal-open');
-    requestAnimationFrame(() => termsAgreement?.focus());
-  }
-
-  if (termsAgreement) {
-    termsAgreement.addEventListener('change', () => {
-      if (termsProceed) termsProceed.disabled = !termsAgreement.checked;
-    });
-  }
-
-  termsCloseButtons.forEach(button => button.addEventListener('click', closeTermsModal));
-  termsCancel?.addEventListener('click', closeTermsModal);
-
-  termsProceed?.addEventListener('click', () => {
-    if (!termsAgreement?.checked || !pendingCheckout) return;
-    const { button, interval } = pendingCheckout;
-    closeTermsModal();
-    paypalCheckout(button, interval);
-  });
-
-  document.addEventListener('keydown', event => {
-    if (event.key === 'Escape' && termsModal && !termsModal.hidden) closeTermsModal();
-  });
 
   async function session() {
     if (!window.NovexaAuth) throw new Error('Authentication helper did not load.');
@@ -188,13 +137,7 @@
     history.replaceState({}, '', 'payment.html');
   }
 
-  checkoutButtons.forEach(([button, interval]) => button.addEventListener('click', () => {
-    if (button.dataset.managePro === 'true') {
-      location.href = 'settings.html';
-      return;
-    }
-    openTermsModal(button, interval);
-  }));
+  checkoutButtons.forEach(([button, interval]) => button.addEventListener('click', () => paypalCheckout(button, interval)));
 
   (async () => {
     const params = new URLSearchParams(location.search);
