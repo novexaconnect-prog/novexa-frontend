@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en"><head>
+    <link rel="icon" href="../assets/images/novexa-tab-logo.png?v=43.45" type="image/png"><link rel="apple-touch-icon" href="../assets/images/novexa-tab-logo.png?v=43.45">
+  <script src="../js/theme-boot.js"></script><script src="../js/runtime-config.js"></script><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Dashboard — Novexa</title>
+<link rel="stylesheet" href="../css/global.css"><link rel="stylesheet" href="../css/components.css"><link rel="stylesheet" href="../css/dashboard.css">
+<script src="../vendor/lucide.min.js"></script><style>.performance-main,.dashboard-main,.dashboard-shell{animation:pageFade .55s ease both}.dashboard-card,.metric-card,.performance-card,.insight-card{transition:transform .22s ease,box-shadow .22s ease}.dashboard-card:hover,.metric-card:hover,.performance-card:hover,.insight-card:hover{transform:translateY(-4px);box-shadow:0 18px 50px rgba(40,25,90,.12)}:root[data-theme="dark"] .dashboard-card:hover,:root[data-theme="dark"] .metric-card:hover,:root[data-theme="dark"] .performance-card:hover,:root[data-theme="dark"] .insight-card:hover{box-shadow:0 18px 50px rgba(0,0,0,.28)}</style></head>
+<body class="dashboard-page"><div class="dashboard-shell"><div id="site-navbar"></div>
+<div class="dashboard-body">
+<aside class="dashboard-sidebar"><nav class="sidebar-nav">
+		<a class="sidebar-link active" href="dashboard.html"><i data-lucide="layout-dashboard"></i>Overview</a>
+		<a class="sidebar-link" href="browse.html"><i data-lucide="book-open"></i>Past Papers</a>
+		<a class="sidebar-link" href="notes.html"><i data-lucide="file-text"></i>Notes</a>
+		<a class="sidebar-link" href="ai.html"><i data-lucide="sparkles"></i>Novexa AI</a>
+		<a class="sidebar-link" href="flashcards.html"><i data-lucide="layers"></i>Flashcards</a>
+		<a class="sidebar-link" href="performance.html"><i data-lucide="bar-chart-3"></i>Performance</a>
+		<a class="sidebar-link" href="planner.html"><i data-lucide="calendar"></i>Study Planner</a>
+			<a class="sidebar-link" href="focus.html"><i data-lucide="timer"></i>Focus Mode</a>
+			<a class="sidebar-link" href="notifications.html"><i data-lucide="bell"></i>Notifications</a>
+			<div class="sidebar-divider"></div>
+		<a class="sidebar-link" href="pet.html"><i data-lucide="paw-print"></i>AI Pet</a>
+		<a class="sidebar-link" href="settings.html"><i data-lucide="settings"></i>Settings</a>
+			<a class="sidebar-link" href="help.html"><i data-lucide="help-circle"></i>Help &amp; Support</a>
+			</nav><section id="dashboardUpgradeCard" class="dashboard-upgrade-card" hidden><span class="dashboard-upgrade-icon">✦</span><h2>Upgrade to Pro</h2><p>50 AI usage units/day, advanced tools and priority AI processing.</p><button id="dashboardUpgradeButton" type="button">Upgrade to Pro <span>→</span></button></section></aside>
+<main class="dashboard-main">
+		<section class="dashboard-heading dashboard-welcome-panel">
+			<div class="dashboard-welcome-copy">
+				<span class="dashboard-kicker"><span class="dashboard-kicker-dot"></span>Your personal study space</span>
+				<h1>Welcome, <span id="headingName">Student</span>! <span class="wave">👋</span></h1>
+				<p>Your progress, priorities and next best study move — all in one calm place.</p>
+				<div class="dashboard-momentum"><i data-lucide="sparkles" aria-hidden="true"></i><strong>Ready for your next win</strong><span>Small sessions build serious momentum.</span></div>
+			</div>
+			<div class="dashboard-date-wrap"><span class="dashboard-date-label">Today’s focus</span><button class="date-picker" id="dateButton" type="button"><i data-lucide="calendar-days" aria-hidden="true"></i><span id="todayDate"></span><span class="chevron"></span></button></div>
+		</section>
+		<div class="stats-overview"><div><span>STUDY SNAPSHOT</span><strong>Keep the momentum visible.</strong></div><p>Everything below updates from your own study activity.</p></div>
+	<section class="stats-grid">
+	<article class="stat-card stat-streak"><div class="stat-icon fire"><i data-lucide="flame" aria-hidden="true"></i></div><div class="stat-content"><span class="stat-label">Study streak</span><strong><span id="streakValue">0</span> <small>days</small></strong><span class="stat-change">Start a focus session to build it</span></div><span class="stat-orb" aria-hidden="true"></span></article>
+	<article class="stat-card stat-tasks"><div class="stat-icon target"><i data-lucide="circle-check" aria-hidden="true"></i></div><div class="stat-content"><span class="stat-label">Tasks completed</span><strong id="goalValue">0</strong><div class="mini-progress"><i id="goalBar" style="width:0%"></i></div><span class="metric-helper">Your plan, in motion</span></div><span class="stat-orb" aria-hidden="true"></span></article>
+	<article class="stat-card stat-study"><div class="stat-icon chart"><i data-lucide="activity" aria-hidden="true"></i></div><div class="stat-content"><span class="stat-label">Weekly study</span><strong id="weeklyValue">0m</strong><span class="stat-change">No activity recorded yet</span></div><span class="stat-orb" aria-hidden="true"></span></article>
+	<article class="stat-card stat-credits"><div class="stat-icon star"><i data-lucide="sparkles" aria-hidden="true"></i></div><div class="stat-content"><span class="stat-label">AI usage units</span><strong id="aiScore">—</strong><span class="score-message" id="aiPlan">Loading…</span><a id="aiPlanAction" class="dashboard-plan-link" href="payment.html">Upgrade to Pro</a></div><span class="pro-shine" aria-hidden="true"></span></article>
+	<article class="stat-card stat-recall"><div class="stat-icon target"><i data-lucide="layers-3" aria-hidden="true"></i></div><div class="stat-content"><span class="stat-label">Active recall</span><strong id="dueDeckCards">0</strong><span class="stat-change" id="dueDeckSummary">cards due for review</span><button id="reviewDueButton" class="text-button" type="button">Review cards <span aria-hidden="true">→</span></button></div><span class="stat-orb" aria-hidden="true"></span></article>
+		<article class="stat-card stat-exams"><div class="stat-icon clock"><i data-lucide="calendar-clock" aria-hidden="true"></i></div><div class="stat-content"><span class="stat-label">Upcoming exams</span><strong id="examCount">0</strong><span class="stat-change">Add your exam dates below</span></div><span class="stat-orb" aria-hidden="true"></span></article>
+	</section>
+<section class="dashboard-grid main-row">
+<article class="panel study-plan"><div class="panel-header"><h2><i data-lucide="calendar-check" style="width:18px;height:18px;vertical-align:middle;margin-right:8px"></i>Today's Study Plan</h2><div style="display:flex;gap:10px"><button class="text-button" id="addTaskButton">Add task</button><button class="text-button" data-route="planner.html">Open planner</button></div></div><div id="planList" class="plan-list"></div></article>
+<article class="panel exams-panel"><div class="panel-header"><h2><i data-lucide="graduation-cap" style="width:18px;height:18px;vertical-align:middle;margin-right:8px"></i>Upcoming Exams</h2><button class="text-button" id="addExamButton">Add exam</button></div><div id="examList" class="exam-list"></div></article>
+<article class="ai-suggestion" aria-live="polite"><div class="pet-narrator"><div id="dashboardPetAvatar" class="pet-narrator-avatar" aria-hidden="true">🦊</div><div><span class="ai-kicker">✦ <span id="dashboardPetName">Nova</span> · Daily thought</span><span id="dashboardPetNarrator" class="pet-narrator-name">Your personal AI study buddy</span></div></div><div class="pet-speech-bubble"><span class="pet-speech-tail" aria-hidden="true"></span><h2 id="dailyQuote">Small, consistent study creates lasting understanding.</h2><p id="dailyQuoteSource">Your AI Pet has a thought for today.</p></div><div class="topic-tags"><span>Motivation</span><span>Focus</span><span>Revision</span></div><button id="suggestionButton" type="button">Chat with your AI Pet <b>›</b></button></article>
+</section>
+<section class="dashboard-grid lower-row">
+<article class="panel continue-panel"><div class="panel-header"><h2>Focus &amp; revision</h2></div><div class="continue-content"><div class="document-icon"><i data-lucide="timer" aria-hidden="true"></i></div><div class="continue-info"><strong>Focus Mode</strong><span>Pomodoro timer + study statistics</span><div class="progress-track"><i id="focusProgressBar" style="width:0%"></i></div><small id="focusProgressLabel">Nothing tracked yet</small></div><div class="focus-dashboard-actions"><button id="focusOpenButton" class="focus-dashboard-button secondary" type="button" hidden>Open</button><button id="focusStopButton" class="focus-dashboard-button danger" type="button" hidden>Stop</button><button id="continueButton" class="focus-dashboard-button" type="button">Start</button></div></div></article>
+<article class="panel activity-panel"><div class="panel-header"><h2>Your Weekly Activity</h2><button class="text-button" data-route="performance.html">View performance</button></div><div class="activity-chart"><div class="y-labels"><span>8h</span><span>6h</span><span>4h</span><span>2h</span><span>0h</span></div><div id="activityBars" class="bars"></div></div></article>
+</section>
+<section class="quick-actions"><h2>Quick Actions</h2><div class="quick-grid">
+	<button class="quick-action" data-route="browse.html"><i class="quick-action-icon" data-lucide="book-open" aria-hidden="true"></i><span>Browse Free Papers</span></button><button class="quick-action highlight" data-route="ai.html"><i class="quick-action-icon" data-lucide="sparkles" aria-hidden="true"></i><span>Novexa AI</span></button><button class="quick-action" data-route="notes.html"><i class="quick-action-icon" data-lucide="notebook-pen" aria-hidden="true"></i><span>Notes</span></button><button class="quick-action" data-route="planner.html"><i class="quick-action-icon" data-lucide="calendar-days" aria-hidden="true"></i><span>Study Planner</span></button><button class="quick-action" data-route="focus.html"><i class="quick-action-icon" data-lucide="timer" aria-hidden="true"></i><span>Focus Mode</span></button><button class="quick-action" data-route="pet.html"><i class="quick-action-icon" data-lucide="paw-print" aria-hidden="true"></i><span>AI Pet</span></button>
+</div></section>
+</main></div></div>
+<div class="dashboard-modal" id="dashboardModal" hidden><div class="modal-backdrop" data-close-modal></div><div class="modal-card"><button class="modal-close" data-close-modal type="button">×</button><div id="modalContent"></div></div></div>
+<script src="../vendor/supabase.min.js"></script><script src="../js/supabase.js"></script><script src="../js/auth.js"></script><script>window.NovexaAuth.requireAuth({ returnTo: window.location.href });</script><script src="../js/focus-manager.js"></script><script src="../js/components/navbar.js"></script><script src="../js/pages/dashboard.js?v=43.67"></script><script>lucide.createIcons();</script></body></html>

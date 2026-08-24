@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <link rel="icon" href="../assets/images/novexa-tab-logo.png?v=43.45" type="image/png"><link rel="apple-touch-icon" href="../assets/images/novexa-tab-logo.png?v=43.45">
+  <script src="../js/theme-boot.js"></script><script src="../js/runtime-config.js"></script>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <!-- Novexa V43.71: final math/table readability + no red MathJax artefacts -->
+  <title>Active Recall Decks — Novexa</title>
+  <link rel="stylesheet" href="../css/global.css"><link rel="stylesheet" href="../css/components.css"><link rel="stylesheet" href="../css/tool-pages.css">
+  <script src="../vendor/lucide.min.js"></script>
+  <script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"],["$$","$$"]],processEscapes:true,processEnvironments:true,packages:{"[+]": ["ams"]}},options:{skipHtmlTags:["script","noscript","style","textarea","pre","code"],ignoreHtmlClass:"tex2jax_ignore",processHtmlClass:"mathjax_process"},svg:{fontCache:"global"},startup:{typeset:false}};</script>
+  <script src="../vendor/mathjax-tex-svg-3.2.2.js?v=43.71"></script>
+  <style>
+    :root{--ink:#292c4b;--muted:#777c98;--line:#e7e3f1;--purple:#6843f5;--purple-2:#a37bff;--soft:#f7f5ff;--shadow:0 22px 60px rgba(55,38,130,.10);--card:#fff;--danger:#d95c48;--success:#16805a}
+    .flash-page{min-height:100vh;background:radial-gradient(circle at 92% -8%,rgba(135,104,255,.17),transparent 28%),linear-gradient(180deg,#fbfaff 0%,#f7f8fc 100%)}.flash-shell{max-width:1160px;margin:auto;padding:32px 24px 70px}.flash-hero,.deck-toolbar,.panel-head,.deck-head,.deck-actions,.history-row,.study-head{display:flex;justify-content:space-between;align-items:center;gap:14px}.flash-hero{align-items:flex-end;margin:18px 0 24px}.flash-kicker{display:inline-flex;gap:7px;align-items:center;color:var(--purple);font-size:11px;font-weight:900;letter-spacing:.14em}.flash-hero h1{margin:10px 0;font-size:clamp(31px,4vw,48px);letter-spacing:-.055em;color:var(--ink)}.flash-hero p{max-width:610px;margin:0;color:var(--muted);line-height:1.65}.button{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--line);border-radius:13px;padding:11px 14px;background:var(--card);color:#5e557f;font:inherit;font-size:12px;font-weight:850;cursor:pointer;text-decoration:none;transition:.18s transform,.18s box-shadow,.18s background}.button:hover{transform:translateY(-2px);box-shadow:0 11px 22px rgba(55,38,130,.11)}.button:disabled{opacity:.55;cursor:wait;transform:none}.button-primary{border:0;background:linear-gradient(135deg,var(--purple),#8e61ff);color:#fff;box-shadow:0 14px 30px rgba(104,67,245,.24)}.button-danger{color:var(--danger)}.button-small{padding:8px 10px;font-size:11px}.flash-overview{display:grid;grid-template-columns:1.2fr repeat(3,1fr);gap:12px;margin-bottom:24px}.metric,.deck,.history-panel{background:rgba(255,255,255,.9);border:1px solid rgba(229,225,241,.92);box-shadow:var(--shadow);border-radius:19px}.metric{padding:18px}.metric small{display:block;color:var(--muted);font-weight:850;font-size:10px;letter-spacing:.08em}.metric strong{display:block;margin-top:8px;color:var(--ink);font-size:30px;letter-spacing:-.05em}.metric p{margin:4px 0 0;color:#9a9db1;font-size:11px}.metric.streak{position:relative;overflow:hidden;border:0;background:linear-gradient(135deg,#30235e,#6d46e8)}.metric.streak:after{content:"";position:absolute;width:150px;height:150px;border-radius:50%;right:-45px;top:-70px;background:rgba(255,255,255,.11)}.metric.streak strong{color:#fff}.metric.streak small,.metric.streak p{color:rgba(255,255,255,.73)}.deck-toolbar{margin:4px 0 14px}.deck-toolbar h2,.panel-head h2{margin:0;color:var(--ink);font-size:20px;letter-spacing:-.03em}.search{display:flex;align-items:center;gap:8px;min-width:min(100%,290px);padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--card);color:#989bb0}.search input{width:100%;border:0;outline:0;background:transparent;color:var(--ink);font:inherit;font-size:12px}.deck-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}.deck{padding:18px;transition:.2s transform,.2s box-shadow}.deck:hover{transform:translateY(-3px);box-shadow:0 26px 70px rgba(55,38,130,.15)}.deck-title{margin:0;color:var(--ink);font-size:17px;letter-spacing:-.02em}.deck-sub{margin:6px 0 0;color:var(--muted);font-size:12px}.deck-menu{display:flex;gap:6px}.icon-button{width:32px;height:32px;display:grid;place-items:center;padding:0}.progress{height:7px;margin:18px 0 11px;border-radius:99px;background:#eeeaf7;overflow:hidden}.progress span{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--purple),var(--purple-2));transition:width .3s}.deck-meta{display:flex;justify-content:space-between;gap:8px;color:#8b8da4;font-size:11px}.deck-actions{margin-top:16px;align-items:flex-end}.due-badge{display:inline-flex;align-items:center;gap:5px;color:#6945e8;font-size:11px;font-weight:850}.history-panel{margin-top:28px;padding:20px}.history-sub{margin:4px 0 0;color:var(--muted);font-size:12px}.history-list{display:grid;gap:8px;margin-top:16px}.history-row{display:grid;grid-template-columns:36px 1fr auto;align-items:center;padding:9px 0;border-bottom:1px solid #f0edf6}.history-row:last-child{border:0}.history-dot{width:30px;height:30px;display:grid;place-items:center;border-radius:10px;background:#f0ebff;color:var(--purple)}.history-dot.again{background:#fff2ed;color:var(--danger)}.history-dot.hard{background:#fff8e8;color:#b87510}.history-row strong{display:block;color:#4e5270;font-size:12px}.history-row span,.history-row time{color:#9a9db1;font-size:11px}.empty{grid-column:1/-1;padding:42px 22px;border:1px dashed #dcd6ee;border-radius:18px;background:var(--card);text-align:center;color:var(--muted)}.empty p{margin:9px 0}.modal{position:fixed;z-index:90;inset:0;display:grid;place-items:center;padding:18px;background:rgba(26,19,61,.58);backdrop-filter:blur(9px);opacity:0;pointer-events:none;transition:opacity .2s}.modal.open{opacity:1;pointer-events:auto}.modal-panel{width:min(760px,100%);max-height:min(90vh,820px);overflow:auto;padding:22px;border:1px solid rgba(255,255,255,.35);border-radius:24px;background:#faf9ff;box-shadow:0 40px 110px rgba(23,15,65,.34);transform:translateY(12px) scale(.98);transition:transform .22s}.modal.open .modal-panel{transform:none}.study-panel{width:min(680px,100%)}.study-head h2,.editor-head h2{margin:0;color:var(--ink);font-size:18px}.study-count{color:var(--muted);font-size:11px;font-weight:800}.close{border:0;background:transparent;color:#8a8da5;cursor:pointer;padding:4px}.study-card{height:320px;margin:20px 0;perspective:1300px;cursor:pointer}.study-inner{position:relative;height:100%;transform-style:preserve-3d;transition:transform .5s cubic-bezier(.23,1,.32,1)}.study-card.flipped .study-inner{transform:rotateY(180deg)}.face{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:36px;border:1px solid #e6e1f2;border-radius:20px;background:#fff;box-shadow:0 14px 36px rgba(59,41,130,.08);text-align:center;backface-visibility:hidden}.face.back{background:linear-gradient(135deg,#f0ebff,#fff);transform:rotateY(180deg)}.face small{color:var(--purple);font-size:10px;font-weight:900;letter-spacing:.14em}.face p{margin:14px 0 0;color:var(--ink);font-size:clamp(17px,2.5vw,23px);font-weight:750;line-height:1.55}.study-hint{margin:-7px 0 14px;color:#9a9db1;text-align:center;font-size:11px}.rating-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}.rating{padding:11px 7px;border-radius:13px;border:1px solid var(--line);background:#fff;color:#585c76;font:inherit;font-size:11px;font-weight:900;cursor:pointer}.rating small{display:block;margin-top:3px;font-weight:650;color:#9296ab}.rating.again{background:#fff4ef;color:#ce6840}.rating.hard{background:#fff9e8;color:#aa7015}.rating.good{background:#eafaf2;color:#238156}.rating.easy{background:#edf3ff;color:#426fc9}.editor-head{display:flex;justify-content:space-between;align-items:center;gap:12px}.form-row{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin:16px 0}.field{display:grid;gap:5px;color:#5d6077;font-size:11px;font-weight:850}.field input,.field textarea,.field select{box-sizing:border-box;width:100%;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink);padding:10px;font:inherit;font-size:12px}.field textarea{min-height:72px;resize:vertical}.card-editor{margin:12px 0;padding:13px;border:1px solid var(--line);border-radius:15px;background:#fff}.card-editor-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:9px}.card-editor strong{color:var(--ink);font-size:12px}.editor-actions{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-top:16px}.toast{position:fixed;right:18px;bottom:18px;z-index:120;max-width:350px;padding:12px 14px;border-radius:13px;background:#30235e;color:#fff;box-shadow:0 18px 36px rgba(20,13,55,.3);font-size:12px;opacity:0;transform:translateY(8px);pointer-events:none;transition:.2s}.toast.show{opacity:1;transform:none}.toast.error{background:#a93f38}
+
+    /* Active Recall theme contract: every surface follows Novexa light/dark tokens. */
+    .flash-page .metric,.flash-page .deck,.flash-page .history-panel{background:var(--card);color:var(--ink);border-color:var(--line)}
+    .flash-page .metric.streak{background:linear-gradient(135deg,#30235e,#6d46e8);color:#fff;border-color:transparent}.flash-page .metric.streak strong{color:#fff}.flash-page .metric.streak small,.flash-page .metric.streak p{color:rgba(255,255,255,.78)}
+    .flash-page .search,.flash-page .empty{background:var(--card);color:var(--muted);border-color:var(--line)}
+    .flash-page .history-row{border-color:var(--line)}
+    .flash-page .history-row strong{color:var(--ink)}
+    .flash-page .history-row span,.flash-page .history-row time{color:var(--muted)} .novexa-section-heading{display:flex;align-items:center;gap:7px;margin:10px 0 7px;font-weight:900}.novexa-section-symbol{color:var(--purple);flex:0 0 auto}.study-content{max-width:100%;overflow:auto}.study-content mjx-container{max-width:100%;}
+    .flash-page .progress{background:var(--soft)}
+    .flash-page .field input,.flash-page .field textarea,.flash-page .field select,.flash-page .card-editor,.flash-page .rating{background:var(--card);color:var(--ink);border-color:var(--line)}
+    .flash-page .face{background:var(--card);color:var(--ink);border-color:var(--line)}
+    .flash-page .face.back{background:linear-gradient(135deg,var(--soft),var(--card))}
+    .flash-page .modal-panel{background:var(--card);color:var(--ink);border-color:var(--line)}
+    .flash-page .rating{color:var(--ink)}
+    .flash-page .rating.again{background:color-mix(in srgb,#ce6840 12%,var(--card));color:#ce6840}
+    .flash-page .rating.hard{background:color-mix(in srgb,#b87510 12%,var(--card));color:#b87510}
+    .flash-page .rating.good{background:color-mix(in srgb,#238156 12%,var(--card));color:#238156}
+    .flash-page .rating.easy{background:color-mix(in srgb,#426fc9 12%,var(--card));color:#426fc9}
+    .flash-page .button{color:var(--ink)}
+    .flash-page .button-primary{color:#fff}
+    .flash-page .due-badge{color:var(--purple)}
+    :root[data-theme="dark"] .flash-page .metric:not(.streak),:root[data-theme="dark"] .flash-page .deck,:root[data-theme="dark"] .flash-page .history-panel{background:#121626;box-shadow:0 22px 60px rgba(0,0,0,.24)}
+    :root[data-theme="dark"] .flash-page .empty{background:#101321;border-color:rgba(181,154,255,.24)}
+    :root[data-theme="dark"] .flash-page .metric p{color:#9ca4bd}
+    :root[data-theme="dark"] .flash-page .progress{background:#252a3d}
+    :root[data-theme="dark"] .flash-page .history-dot{background:#25213e}
+    :root[data-theme="dark"] .flash-page .history-dot.again{background:#34221f}
+    :root[data-theme="dark"] .flash-page .history-dot.hard{background:#352d1b}
+    :root[data-theme="dark"] .flash-page .history-dot.good{background:#17352a}
+    :root[data-theme="dark"] .flash-page .history-dot.easy{background:#192b45}
+    @media(max-width:720px){.flash-page .flash-hero{align-items:flex-start;flex-direction:column}.flash-page .flash-overview{grid-template-columns:1fr 1fr}.flash-page .deck-grid{grid-template-columns:1fr}}
+    :root[data-theme="dark"] .flash-page{--ink:#f6f3ff;--muted:#aeb2c9;--line:rgba(255,255,255,.12);--purple:#b59aff;--purple-2:#d0bcff;--card:rgba(16,19,33,.92);--shadow:0 22px 60px rgba(0,0,0,.24);background:radial-gradient(circle at 92% -8%,rgba(124,77,255,.2),transparent 28%),linear-gradient(180deg,#080a14,#0b0e1b)}:root[data-theme="dark"] .deck,:root[data-theme="dark"] .metric,:root[data-theme="dark"] .history-panel{border-color:rgba(255,255,255,.12)}:root[data-theme="dark"] .modal-panel{background:#101321;border-color:rgba(255,255,255,.12)}:root[data-theme="dark"] .face,:root[data-theme="dark"] .field input,:root[data-theme="dark"] .field textarea,:root[data-theme="dark"] .field select,:root[data-theme="dark"] .card-editor,:root[data-theme="dark"] .rating{background:#15192a;border-color:rgba(255,255,255,.13);color:#f6f3ff}:root[data-theme="dark"] .face.back{background:linear-gradient(135deg,#211c3d,#15192a)}:root[data-theme="dark"] .history-row{border-color:rgba(255,255,255,.1)}:root[data-theme="dark"] .history-row strong{color:#f0edff}:root[data-theme="dark"] .progress{background:#25233b}
+    @media(max-width:850px){.flash-overview{grid-template-columns:repeat(2,1fr)}.deck-grid{grid-template-columns:1fr}}@media(max-width:620px){.flash-shell{padding:22px 15px 50px}.flash-hero{display:block}.flash-hero .button{margin-top:16px}.deck-toolbar{align-items:stretch;flex-direction:column}.search{min-width:0}.flash-overview{grid-template-columns:1fr 1fr}.metric{padding:14px}.metric strong{font-size:25px}.rating-grid{grid-template-columns:1fr 1fr}.study-card{height:275px}.face{padding:22px}.form-row{grid-template-columns:1fr}.history-row{grid-template-columns:30px 1fr}.history-row time{display:none}}
+    /* Theme tokens and scoped component surfaces keep both modes cohesive. */
+    :root{--flash-bg:#f7f7fb;--surface:#fff;--surface-secondary:#f2f0fb;--text-primary:#171923;--text-secondary:#62697c;--border:#e4e0f0;--accent:#6843f5;--success:#16805a;--warning:#b87510;--danger:#d95c48}
+    :root[data-theme="dark"]{--flash-bg:#0b0d17;--surface:#151827;--surface-secondary:#1c2031;--text-primary:#f5f5f7;--text-secondary:#a7adc2;--border:rgba(255,255,255,.13);--accent:#b59aff;--success:#55c997;--warning:#f1bd58;--danger:#ff8a76}
+    .flash-page{background:radial-gradient(circle at 92% -8%,color-mix(in srgb,var(--accent) 18%,transparent),transparent 29%),var(--flash-bg)}
+    .flash-page .metric.streak{background:linear-gradient(135deg,#30235e,#6d46e8);border-color:transparent;color:#fff}
+    .flash-page .metric.streak strong{color:#fff}
+    .flash-page .metric.streak small,.flash-page .metric.streak p{color:rgba(255,255,255,.78)}
+    .flash-page .metric,.flash-page .deck,.flash-page .history-panel{background:var(--surface);border-color:var(--border);box-shadow:0 18px 48px color-mix(in srgb,var(--text-primary) 9%,transparent)}
+    .flash-page .deck:hover{box-shadow:0 24px 60px color-mix(in srgb,var(--text-primary) 15%,transparent)}
+    .flash-page .deck-title,.flash-page .deck-toolbar h2,.flash-page .panel-head h2,.flash-page .study-head h2,.flash-page .editor-head h2,.flash-page .face p{color:var(--text-primary)}
+    .flash-page .deck-sub,.flash-page .history-sub,.flash-page .metric p,.flash-page .deck-meta,.flash-page .history-row span,.flash-page .history-row time,.flash-page .study-hint{color:var(--text-secondary)}
+    .flash-page .button,.flash-page .search,.flash-page .field input,.flash-page .field textarea,.flash-page .field select,.flash-page .card-editor,.flash-page .rating{background:var(--surface);border-color:var(--border);color:var(--text-primary)}
+    .flash-page .face{background:var(--surface);border-color:var(--border)}.flash-page .face.back{background:linear-gradient(135deg,var(--surface-secondary),var(--surface))}.flash-page .modal-panel{background:var(--surface);border-color:var(--border)}.flash-page .progress{background:var(--surface-secondary)}
+    .study-progress{height:9px;margin:14px 0 0;border-radius:999px;background:var(--surface-secondary);border:1px solid var(--border);overflow:hidden;box-shadow:inset 0 1px 2px rgba(0,0,0,.08)}.study-progress span{display:block;height:100%;width:0;min-width:0;border-radius:inherit;background:linear-gradient(90deg,var(--accent),#a37bff);transition:width .35s cubic-bezier(.23,1,.32,1);box-shadow:0 0 14px rgba(124,77,255,.28)}.study-nav{display:flex;justify-content:center;gap:8px;margin:0 0 7px}.study-coach{display:flex;justify-content:center;align-items:center;gap:7px;min-height:24px;margin:0;color:var(--text-secondary);font-size:11px;text-align:center}.study-content{max-width:100%;overflow:auto}.study-content{min-width:0;overflow-wrap:anywhere}.study-content mjx-container{color:inherit!important;max-width:100%;overflow-x:auto;overflow-y:hidden}.study-content mjx-math{max-width:100%}.study-content mjx-container[display="true"]{display:block!important;margin:12px 0!important;padding:9px;overflow-x:auto;border:1px solid var(--border);border-radius:10px;background:var(--surface-secondary)}
+    .flash-filter{min-width:160px;padding:10px 12px;border:1px solid var(--border);border-radius:12px;background:var(--surface);color:var(--text-primary);font:inherit;font-size:12px}.deck-toolbar-controls{display:flex;gap:9px;align-items:center}.empty .empty-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin-top:14px}.empty span{display:block;font-size:11px;color:var(--text-secondary)}
+    @media(max-width:620px){.deck-toolbar-controls{width:100%;flex-direction:column;align-items:stretch}.flash-filter{width:100%;min-width:0}.study-card{margin-bottom:13px}.study-nav .button{min-width:90px}}
+    .study-panel{width:min(900px,94vw);min-height:min(80vh,760px);background:transparent!important;border:0!important;box-shadow:none!important}.study-panel .study-head,.study-panel .study-progress,.study-panel .study-nav,.study-panel .study-hint,.study-panel .study-coach,.study-panel .rating-grid{max-width:760px;margin-left:auto;margin-right:auto}.study-card{height:min(52vh,460px);max-width:760px;margin:20px auto;perspective:1500px}.face{padding:44px}.face small{display:inline-flex;padding:6px 9px;border-radius:999px;background:var(--surface-secondary);font-size:10px}.study-content{font-size:clamp(22px,3vw,36px);line-height:1.25;font-weight:800}.study-answer-details{display:grid;gap:9px;width:min(620px,100%);margin:16px auto 0;text-align:left;font-size:13px;line-height:1.55}.study-answer-details[hidden]{display:none}.study-detail{padding:11px 13px;border:1px solid var(--border);border-radius:12px;background:var(--surface-secondary)}.study-detail b{display:block;margin-bottom:4px;color:var(--accent);font-size:10px;letter-spacing:.1em}.study-shortcuts{font-size:10px;color:var(--text-secondary);text-align:center}.study-complete{max-width:620px;margin:40px auto;padding:34px 26px;border:1px solid var(--border);border-radius:24px;background:var(--surface);box-shadow:0 22px 60px color-mix(in srgb,var(--text-primary) 14%,transparent);text-align:center}.study-complete[hidden]{display:none}.study-complete h2{margin:8px 0;color:var(--text-primary);font-size:clamp(26px,4vw,38px)}.study-complete p{color:var(--text-secondary)}.completion-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:20px 0}.completion-stat{padding:12px;border-radius:13px;background:var(--surface-secondary);color:var(--text-primary);font-weight:900}.completion-stat small{display:block;margin-top:4px;color:var(--text-secondary);font-size:10px;font-weight:700}.completion-actions{display:flex;justify-content:center;gap:9px;flex-wrap:wrap}.study-panel.session-finished .study-head,.study-panel.session-finished .study-progress,.study-panel.session-finished .study-card,.study-panel.session-finished .study-nav,.study-panel.session-finished .study-hint,.study-panel.session-finished .study-coach,.study-panel.session-finished .rating-grid,.study-panel.session-finished .study-shortcuts{display:none}@media(max-width:620px){.study-panel{width:calc(100vw - 20px);min-height:0;padding:10px}.study-card{width:calc(100vw - 42px);height:min(60vh,520px);margin:14px auto}.face{padding:24px}.study-content{font-size:clamp(22px,7vw,27px)}.rating{min-height:58px}.completion-stats{grid-template-columns:1fr}.study-answer-details{font-size:12px}}
+  
+/* Premium deck cards: visual hierarchy, subject tint, and touch-friendly actions. */
+.deck{position:relative;overflow:hidden;padding:20px;background:linear-gradient(145deg,var(--card),color-mix(in srgb,var(--card) 86%,var(--purple) 14%));border-color:color-mix(in srgb,var(--line) 80%,var(--purple) 20%)}
+.deck:before{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:linear-gradient(90deg,var(--purple),var(--purple-2),#c8a7ff);opacity:.9}.deck:after{content:"";position:absolute;width:130px;height:130px;right:-65px;top:-60px;border-radius:50%;background:rgba(126,91,255,.09);pointer-events:none}.deck-head{position:relative;z-index:1}.deck-title{font-size:18px}.deck-sub{line-height:1.55}.deck-menu{position:relative;z-index:2}.deck-menu .icon-button{border-radius:11px;background:rgba(255,255,255,.62);backdrop-filter:blur(10px)}.deck-menu .icon-button:hover{background:#fff}.progress{height:8px;margin:20px 0 10px;background:color-mix(in srgb,var(--line) 65%,transparent)}.deck-actions{position:relative;z-index:2}.deck-actions .button-primary{min-height:38px;padding-inline:15px;border-radius:12px}.due-badge{padding:7px 9px;border-radius:999px;background:rgba(112,73,245,.09)}
+:root[data-theme="dark"] .deck{background:linear-gradient(145deg,#151927,#10131f);border-color:rgba(255,255,255,.11);box-shadow:0 18px 48px rgba(0,0,0,.22)}:root[data-theme="dark"] .deck:after{background:rgba(169,140,255,.08)}:root[data-theme="dark"] .deck-menu .icon-button{background:rgba(255,255,255,.05);color:#c9beff;border-color:rgba(255,255,255,.1)}:root[data-theme="dark"] .deck-menu .icon-button:hover{background:rgba(169,140,255,.14)}
+@media(max-width:620px){.deck{padding:18px}.deck-actions{align-items:center}.deck-actions .button-primary{flex:1}.due-badge{font-size:10px}}
+</style>
+<script src="../js/utils/math-format.js?v=43.71"></script><style id="novexa-v43-71-math-error-guard">
+    .mjx-merror,.MathJax_Error,[data-mjx-error]{display:none!important}
+  </style>
+</head>
+<body class="tool-page flash-page">
+  <div id="site-navbar"></div>
+  <main class="flash-shell">
+    <section class="flash-hero"><div><span class="flash-kicker"><i data-lucide="layers-3" width="14"></i> ACTIVE RECALL LAB</span><h1>Remember more, in less time.</h1><p>Review your decks, use a genuine spaced-repetition schedule, and see how your recall is improving.</p></div><div class="deck-actions"><button class="button" id="create-deck" type="button"><i data-lucide="plus" width="15"></i> Create deck</button><a class="button button-primary" href="ai.html"><i data-lucide="sparkles" width="15"></i> Create with AI</a></div></section>
+    <section class="flash-overview" aria-label="Active recall overview"><div class="metric streak"><small>CURRENT STREAK</small><strong id="streak">—</strong><p id="streak-note">Loading your review activity…</p></div><div class="metric"><small>DECKS</small><strong id="deck-count">—</strong><p>saved, private study sets</p></div><div class="metric"><small>CARDS DUE</small><strong id="due-count">—</strong><p id="due-note">checking your schedule</p></div><div class="metric"><small>THIS WEEK</small><strong id="week-reviews">—</strong><p>recall decisions completed</p></div></section>
+    <section><div class="deck-toolbar"><h2>Your decks</h2><div class="deck-toolbar-controls"><label class="search"><i data-lucide="search" width="15"></i><input id="search" type="search" placeholder="Search decks, subjects, topics" aria-label="Search decks"></label><select id="subject-filter" class="flash-filter" aria-label="Filter decks by subject"><option value="">All subjects</option></select></div></div><div id="deck-grid" class="deck-grid"><div class="empty"><i data-lucide="loader-circle" width="22"></i><p>Loading your decks…</p></div></div></section>
+    <section class="history-panel"><div class="panel-head"><div><h2>Review history</h2><p class="history-sub">Every recall decision is saved privately to your account.</p></div><button class="button button-small" id="clear-history" type="button"><i data-lucide="eraser" width="14"></i> Clear</button></div><div id="history" class="history-list"></div></section>
+  </main>
+  <div id="study-modal" class="modal" aria-hidden="true"><div class="modal-panel study-panel" role="dialog" aria-modal="true" aria-labelledby="study-title"><div class="study-head"><div><h2 id="study-title">Study deck</h2><span id="study-count" class="study-count"></span></div><button class="close" id="close-study" aria-label="Close study mode"><i data-lucide="x"></i></button></div><div class="study-progress" aria-label="Study progress"><span id="study-progress"></span></div><div id="study-card" class="study-card" tabindex="0" aria-label="Flashcard. Click to reveal the answer."><div class="study-inner"><div class="face"><small id="study-front-type">CONCEPT</small><div id="study-front" class="study-content"></div></div><div class="face back"><small id="study-back-type">ANSWER</small><div id="study-back" class="study-content"></div><div id="study-answer-details" class="study-answer-details" hidden></div></div></div></div><div class="study-nav"><button class="button button-small" id="study-prev" type="button"><i data-lucide="arrow-left" width="14"></i> Previous</button><button class="button button-small" id="study-next" type="button">Next <i data-lucide="arrow-right" width="14"></i></button></div><p class="study-hint" id="study-hint">Click the card or press Space to reveal the answer, then rate your recall.</p><p class="study-coach" id="study-coach"><i data-lucide="sparkles" width="14"></i> Take your time — retrieval is the learning.</p><p class="study-shortcuts">Space · Reveal &nbsp; 1 · Again &nbsp; 2 · Hard &nbsp; 3 · Good &nbsp; 4 · Easy</p><div class="rating-grid"><button class="rating again" data-rating="again">Again<small>10 min</small></button><button class="rating hard" data-rating="hard">Hard<small>1 day</small></button><button class="rating good" data-rating="good">Good<small>3 days</small></button><button class="rating easy" data-rating="easy">Easy<small>7 days</small></button></div></div><div id="study-session-complete" class="study-complete" hidden><div>🎉</div><h2>Session complete!</h2><p id="completion-summary">Your review schedule has been updated.</p><div id="completion-stats" class="completion-stats"></div><p id="completion-coach">🦊 Great work — active recall builds lasting memory.</p><div class="completion-actions"><button id="completion-back" class="button" type="button">Back to decks</button><button id="completion-again" class="button button-primary" type="button">Review again</button></div></div></div></div><div id="create-deck-modal" class="modal" aria-hidden="true"><div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="create-deck-title"><div class="editor-head"><div><h2 id="create-deck-title">Create a deck</h2><p class="history-sub">Start with a private deck, then add cards yourself or have Novexa AI help you generate them.</p></div><button class="close" id="close-create-deck" aria-label="Close create deck"><i data-lucide="x"></i></button></div><form id="create-deck-form"><div class="form-row"><label class="field">Deck name<input id="create-title" required maxlength="120" placeholder="Organic Chemistry"></label><label class="field">Subject<input id="create-subject" maxlength="80" placeholder="Chemistry"></label></div><label class="field">Topic<input id="create-topic" maxlength="120" placeholder="Organic Chemistry"></label><label class="field">Description (optional)<textarea id="create-description" maxlength="255" placeholder="Key reactions and mechanisms"></textarea></label><div class="editor-actions"><a class="button" href="ai.html"><i data-lucide="sparkles" width="14"></i> Create with AI</a><button class="button button-primary" id="save-new-deck" type="submit"><i data-lucide="plus" width="14"></i> Create deck</button></div></form></div></div>
+  <div id="editor-modal" class="modal" aria-hidden="true"><div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="editor-title"><div class="editor-head"><h2 id="editor-title">Edit deck</h2><button class="close" id="close-editor" aria-label="Close editor"><i data-lucide="x"></i></button></div><form id="deck-editor"><div class="form-row"><label class="field">Deck title<input id="edit-title" required maxlength="120"></label><label class="field">Subject<input id="edit-subject" maxlength="80"></label></div><label class="field">Topic<input id="edit-topic" maxlength="120"></label><div id="editor-cards"></div><div class="editor-actions"><button class="button" id="add-card" type="button"><i data-lucide="plus" width="14"></i> Add card</button><div style="display:flex;gap:8px"><a id="generate-more" class="button" href="ai.html"><i data-lucide="sparkles" width="14"></i> Generate with AI</a><button class="button button-primary" type="submit">Save changes</button></div></div></form></div></div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="../vendor/supabase.min.js"></script><script src="../js/supabase.js"></script><script src="../js/auth.js"></script><script>window.NovexaAuth.requireAuth({ returnTo: window.location.href });</script><script src="../js/components/navbar.js"></script>
+  <script>
+  (()=>{
+    const supabase=window.supabaseClient; const $=id=>document.getElementById(id); const apiBase=((location.hostname==='localhost'||location.hostname==='127.0.0.1')&&location.port!=='3000')?'http://localhost:3000':'';
+    const state={user:null,decks:[],history:[],study:null,studyCards:[],studyIndex:0,flipped:false,editing:null,busy:false,sessionRatings:{again:0,hard:0,good:0,easy:0},sessionMasteredKeys:new Set(),autoStudyHandled:false};
+    const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c])); const localDay=d=>new Date(d).toLocaleDateString('en-CA');
+    const cardTypeLabel=value=>{const normalized=String(value||'concept').trim().toLowerCase();const labels={concept:'CONCEPT',definition:'DEFINITION',formula:'FORMULA',application:'APPLICATION','exam question':'EXAM QUESTION','exam tip':'EXAM TIP','common mistake':'COMMON MISTAKE','true false':'CHECKPOINT',why:'WHY','active recall':'ACTIVE RECALL'};return labels[normalized]||normalized.replace(/\b\w/g,char=>char.toUpperCase())};
+    const normalizeFlashcardMath=value=>window.NovexaMath.prepareInline(window.NovexaMath.normalizePlainMathNotation(value));
+    let flashcardMathQueue=Promise.resolve();
+    const renderMath=(element,value)=>{
+      if(!element)return;
+      const normalized=String(window.NovexaMath.stripLeakedLayoutMarkup(normalizeFlashcardMath(value))).replace(/\\\(\s*\\\(/g,'\\(').replace(/\\\)\s*\\\)/g,'\\)');
+      const hasRawMathDelimiters=text=>/\\(?:\[|\]|\(|\))|\$\$/.test(String(text||''));
+      const hasInvalidLatex=text=>{
+        const source=String(text||'');
+        const pattern=/\\\[([\s\S]*?)\\\]|\\\(([\s\S]*?)\\\)|\$\$([\s\S]*?)\$\$/g;
+        let invalid=false;
+        source.replace(pattern,(full,a,b,c)=>{
+          const latex=String(a??b??c??'').trim();
+          let depth=0;
+          for(const ch of latex){if(ch==='{')depth++;else if(ch==='}'){depth--;if(depth<0)return invalid=true;}}
+          if(!latex||depth!==0)invalid=true;
+          return full;
+        });
+        return invalid;
+      };
+      const readable=value=>window.NovexaMath.readableLatex(window.NovexaMath.repairBareTextMathCommands(value));
+      const scrubMathErrors=()=>{
+        element.querySelectorAll?.('.mjx-merror, .MathJax_Error, [data-mjx-error]')?.forEach?.(node=>{
+          try{
+            const clean=readable(node.textContent||'').replace(/\\(?:\(|\)|\[|\])/g,'').trim();
+            node.replaceWith(document.createTextNode(clean));
+          }catch(_){try{node.remove()}catch(_e){}}
+        });
+        window.NovexaMath?.cleanRenderedMathArtifacts?.(element);
+      };
+      element.innerHTML=esc(normalized).replace(/\r?\n/g,'<br>');
+      element.dataset.novexaMathRendered='0';
+      const fallback=()=>{element.textContent=readable(element.textContent||normalized);element.dataset.novexaMathRendered='1';};
+      const typeset=async()=>{
+        if(!element.isConnected)return;
+        const snapshot=element.innerHTML;
+        if(hasInvalidLatex(element.textContent||'')){fallback();return;}
+        if(!window.MathJax?.typesetPromise){fallback();window.setTimeout(()=>{if(element.isConnected)renderMath(element,value)},1200);return;}
+        try{
+          await window.MathJax.typesetPromise([element]);
+          if(element.querySelector?.('.mjx-merror, .MathJax_Error, [data-mjx-error]')){element.innerHTML=snapshot;fallback();scrubMathErrors();}
+          else {
+            const walker=document.createTreeWalker(element,NodeFilter.SHOW_TEXT); const textNodes=[]; let n; while((n=walker.nextNode())) textNodes.push(n); textNodes.forEach(node=>{ const parent=node.parentElement; if(parent?.closest?.('.mjx-container,.MathJax,script,style,pre,code,.flashcard-math-slot,[data-latex]')) return; const v=String(node.nodeValue||''); const c=v.replace(/\\\(|\\\)|\\\[|\\\]/g,''); if(c!==v) node.nodeValue=c; });
+            window.NovexaMath?.cleanRenderedMathArtifacts?.(element);
+            element.dataset.novexaMathRendered='1';
+          }
+        }catch(error){
+          console.warn('Flashcard maths typesetting failed; using readable fallback:',error?.message||error);
+          element.innerHTML=snapshot;
+          fallback();
+        }
+      };
+      const ready=window.MathJax?.startup?.promise;
+      flashcardMathQueue=flashcardMathQueue.then(async()=>{
+        if(ready?.then) await ready.catch(()=>{});
+        await new Promise(requestAnimationFrame);
+        await typeset();
+      });
+    };
+    async function request(path, options = {}) {
+      const response = await window.NovexaAuth.authorizedFetch(apiBase + path, {
+        cache: 'no-store',
+        ...options,
+        headers: { 'Content-Type': 'application/json', ...(options.headers || {}) }
+      });
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        const error = new Error(payload?.error || `Request failed (${response.status})`);
+        error.status = response.status;
+        error.payload = payload;
+        throw error;
+      }
+      return payload;
+    }
+    function toast(message, isError = false) {
+      const node = $('toast');
+      if (!node) return;
+      node.textContent = String(message || '');
+      node.classList.toggle('error', Boolean(isError));
+      node.classList.add('show');
+      clearTimeout(toast.timer);
+      toast.timer = setTimeout(() => node.classList.remove('show'), 3200);
+    }
+    function openModal(id) {
+      const node = $(id); if (!node) return;
+      node.classList.add('open'); node.setAttribute('aria-hidden', 'false');
+    }
+    function closeModal(id) {
+      const node = $(id); if (!node) return;
+      node.classList.remove('open'); node.setAttribute('aria-hidden', 'true');
+    }
+    function closeStudy() {
+      const modal = $('study-modal');
+      state.study = null; state.studyCards = []; state.studyIndex = 0; state.flipped = false; state.sessionRatings = { again: 0, hard: 0, good: 0, easy: 0 };
+      document.querySelector('.study-panel')?.classList.remove('session-finished');
+      $('study-session-complete').hidden = true;
+      if (modal) { modal.classList.remove('open'); modal.setAttribute('aria-hidden', 'true'); }
+    }
+    function cardList(deck) {
+      if (!deck) return [];
+      const rows = Array.isArray(deck.flashcards) ? deck.flashcards : (Array.isArray(deck.cards) ? deck.cards : []);
+      return rows.map((card, index) => ({
+        ...card,
+        id: card.id || `${deck.id}-legacy-${index}`,
+        deck_id: card.deck_id || deck.id,
+        position: Number.isFinite(Number(card.position)) ? Number(card.position) : index,
+        front: String(card.front ?? card.question ?? '').trim(),
+        back: String(card.back ?? card.answer ?? '').trim(),
+        card_type: card.card_type || card.type || 'active recall',
+        difficulty: card.difficulty || 'medium',
+        explanation: card.explanation || '',
+        hint: card.hint || '',
+        exam_tip: card.exam_tip || card.examTip || '',
+        next_review_at: card.next_review_at || null
+      })).filter(card => card.front && card.back).sort((a,b) => a.position - b.position);
+    }
+    function dueCards(deck) {
+      const now = Date.now();
+      return cardList(deck).filter(card => !card.next_review_at || new Date(card.next_review_at).getTime() <= now);
+    }
+    function renderHistory() {
+      const node = $('history');
+      if (!node) return;
+      const ratingLabel = { again: 'Again', hard: 'Hard', good: 'Good', easy: 'Easy' };
+      node.innerHTML = state.history.length ? state.history.slice(0, 20).map(item => {
+        const cls = String(item.rating || 'good').toLowerCase();
+        const deck = state.decks.find(d => String(d.id) === String(item.deck_id));
+        const deckTitle = deck?.title || item.deck_title || 'Flashcard deck';
+        const when = item.reviewed_at ? new Date(item.reviewed_at).toLocaleString([], { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' }) : 'Recently';
+        return `<div class="history-row"><div class="history-dot ${esc(cls)}"><i data-lucide="${cls === 'again' ? 'rotate-ccw' : cls === 'hard' ? 'brain' : cls === 'easy' ? 'zap' : 'check'}" width="14"></i></div><div><strong>${esc(deckTitle)}</strong><span>${esc(ratingLabel[cls] || cls)}</span></div><time>${esc(when)}</time></div>`;
+      }).join('') : '<div class="empty"><p>No review decisions yet.</p></div>';
+      window.lucide?.createIcons();
+    }
+    function drawDecks() {
+      const grid = $('deck-grid'); if (!grid) return;
+      const query = String($('search')?.value || '').trim().toLowerCase();
+      const subject = String($('subject-filter')?.value || '');
+      const filtered = state.decks.filter(deck => {
+        const hay = `${deck.title || ''} ${deck.subject || ''} ${deck.topic || ''}`.toLowerCase();
+        return (!query || hay.includes(query)) && (!subject || String(deck.subject || '') === subject);
+      });
+      const subjects = [...new Set(state.decks.map(deck => String(deck.subject || 'General').trim()).filter(Boolean))].sort((a,b) => a.localeCompare(b));
+      const select = $('subject-filter');
+      if (select) {
+        const current = select.value;
+        select.innerHTML = '<option value="">All subjects</option>' + subjects.map(value => `<option value="${esc(value)}">${esc(value)}</option>`).join('');
+        if (subjects.includes(current)) select.value = current;
+      }
+      $('deck-count').textContent = String(state.decks.length);
+      const due = state.decks.reduce((sum, deck) => sum + dueCards(deck).length, 0);
+      $('due-count').textContent = String(due);
+      $('due-note').textContent = due ? `${due} card${due === 1 ? '' : 's'} ready to review` : 'Nothing due right now';
+      if (!filtered.length) {
+        grid.innerHTML = '<div class="empty"><div style="font-size:28px">✦</div><p>' + (state.decks.length ? 'No decks match your search.' : 'No decks yet. Create one with Novexa AI.') + '</p></div>';
+        return;
+      }
+      grid.innerHTML = filtered.map(deck => {
+        const cards = cardList(deck), dueCount = dueCards(deck).length;
+        const reviewed = cards.filter(card => Number(card.review_count||0) > 0).length;
+        const mastered = cards.filter(card => Number(card.correct_count||0) > 0).length;
+        const progress = cards.length ? Math.round((reviewed / cards.length) * 100) : 0;
+        const masteryLabel = cards.length ? Math.round((mastered / cards.length) * 100) : 0;
+        return `<article class="deck"><div class="deck-head"><div><h3 class="deck-title">${esc(deck.title || 'Untitled deck')}</h3><p class="deck-sub">${esc(deck.subject || 'General')}${deck.topic ? ` · ${esc(deck.topic)}` : ''}</p></div><div class="deck-menu"><button class="button button-small icon-button" data-edit="${esc(deck.id)}" title="Edit deck"><i data-lucide="pencil" width="14"></i></button><button class="button button-small icon-button button-danger" data-delete="${esc(deck.id)}" title="Delete deck"><i data-lucide="trash-2" width="14"></i></button></div></div><div class="progress"><span style="width:${progress}%"></span></div><div class="deck-meta"><span>${cards.length} card${cards.length === 1 ? '' : 's'} · ${progress}% reviewed · ${masteryLabel}% mastered</span><span>${esc(new Date(deck.updated_at || deck.created_at || Date.now()).toLocaleDateString([], { month:'short', day:'numeric', year:'numeric' }))}</span></div><div class="deck-actions"><span class="due-badge">${dueCount ? `✦ ${dueCount} due` : '✓ Up to date'}</span><div><button class="button button-small" data-study="${esc(deck.id)}">Study</button></div></div></article>`;
+      }).join('');
+      grid.querySelectorAll('[data-study]').forEach(btn => btn.onclick = () => { const deck=state.decks.find(d=>String(d.id)===String(btn.dataset.study)); if(deck) startStudy(deck); });
+      grid.querySelectorAll('[data-edit]').forEach(btn => btn.onclick = () => { const deck=state.decks.find(d=>String(d.id)===String(btn.dataset.edit)); if(deck) openEditor(deck); });
+      grid.querySelectorAll('[data-delete]').forEach(btn => btn.onclick = () => deleteDeck(btn.dataset.delete));
+      window.lucide?.createIcons();
+    }
+    function startStudy(deck) {
+      const cards = cardList(deck);
+      if (!cards.length) { toast('This deck has no cards yet.', true); return; }
+      const requestedDue = new URLSearchParams(location.search).get('due') === '1';
+      const due = requestedDue ? cards.filter(card => !card.next_review_at || new Date(card.next_review_at).getTime() <= Date.now()) : cards;
+      state.study = deck; state.studyCards = due.length ? due : cards; state.studyIndex = 0; state.flipped = false; state.sessionRatings = { again:0, hard:0, good:0, easy:0 }; state.sessionRatedPositions = new Set(); state.sessionRatedPositions = new Set(); state.sessionMasteredKeys = new Set();
+      $('study-session-complete').hidden = true; document.querySelector('.study-panel')?.classList.remove('session-finished');
+      openModal('study-modal'); renderStudy();
+    }
+    async function load() {
+      try {
+        const session = await window.NovexaAuth.getValidSession();
+        if (!session?.user) throw new Error('Your Novexa session has expired. Please sign in again.');
+        state.user = session.user;
+        const [deckData, historyResult] = await Promise.all([
+          request('/api/decks'),
+          supabase.from('flashcard_review_history').select('id,deck_id,card_id,rating,reviewed_at,interval_before,interval_after').eq('user_id', session.user.id).order('reviewed_at', { ascending: false }).limit(100)
+        ]);
+        state.decks = Array.isArray(deckData?.decks) ? deckData.decks : [];
+        state.history = Array.isArray(historyResult?.data) ? historyResult.data : [];
+        const reviewsThisWeek = state.history.filter(item => Date.now() - new Date(item.reviewed_at).getTime() < 7 * 86400000).length;
+        const activeDays = [...new Set(state.history.map(item => localDay(item.reviewed_at)))].sort().reverse();
+        let streak = 0; let cursor = new Date(); cursor.setHours(0,0,0,0);
+        for (;;) {
+          const key = cursor.toLocaleDateString('en-CA');
+          if (!activeDays.includes(key)) break;
+          streak += 1; cursor.setDate(cursor.getDate() - 1);
+        }
+        $('streak').textContent = String(streak);
+        $('streak-note').textContent = streak ? `${streak}-day review streak` : 'Start a review streak today';
+        $('week-reviews').textContent = String(reviewsThisWeek);
+        drawDecks(); renderHistory(); launchRequestedStudy();
+      } catch (error) {
+        console.error('[Flashcards] load failed:', error);
+        state.decks = []; state.history = [];
+        $('deck-grid').innerHTML = `<div class="empty"><div style="font-size:28px">⚠</div><p>${esc(error?.message || 'We could not load your decks.')}</p><button class="button button-small" type="button" onclick="location.reload()">Retry</button></div>`;
+      }
+    }
+    function renderAnswerDetails(card){const details=$('study-answer-details');const sections=[['WHY THIS MATTERS',card.explanation],['RETRIEVAL HINT',card.hint],['⚡ EXAM TIP',card.exam_tip||card.examTip]] .filter(([,value])=>String(value||'').trim());details.hidden=!state.flipped||!sections.length;details.innerHTML=sections.map(([label])=>`<div class="study-detail"><b>${label}</b><span></span></div>`).join('');sections.forEach(([,value],index)=>renderMath(details.querySelectorAll('span')[index],value))}
+    function renderStudy(){const card=state.studyCards[state.studyIndex];if(!card){closeStudy();return}const total=state.studyCards.length,sessionDone=state.sessionRatedPositions?.size||0;$('study-title').textContent=state.study.title;$('study-count').textContent=`${state.study.subject||'General'} · ${Math.min(sessionDone+1,total)} of ${total}`;$('study-progress').style.width=`${Math.round((sessionDone/Math.max(total,1))*100)}%`;$('study-front-type').textContent=cardTypeLabel(card.card_type||card.type);$('study-back-type').textContent=state.flipped?'ANSWER':'REVEAL';renderMath($('study-front'),card.front);renderMath($('study-back'),card.back);$('study-card').classList.toggle('flipped',state.flipped);renderAnswerDetails(card);$('study-prev').disabled=state.studyIndex===0;$('study-next').disabled=state.studyIndex>=total-1;$('study-hint').textContent=state.flipped?'How well did you know this?':'Tap the card or press Space to reveal the answer.';const encouragement=state.flipped?'Be honest — that makes the schedule work.':state.sessionRatings.good+state.sessionRatings.easy>=5?'🦊 You’re on a roll!':'🦊 Take your time — retrieval is the learning.';$('study-coach').textContent=encouragement;window.lucide?.createIcons()}
+    function moveStudy(direction){if(!state.study)return;const next=Math.max(0,Math.min(state.studyCards.length-1,state.studyIndex+direction));if(next===state.studyIndex)return;state.studyIndex=next;state.flipped=false;renderStudy()}
+    async function finishStudy(){const total=Object.values(state.sessionRatings).reduce((sum,value)=>sum+value,0),success=state.sessionRatings.good+state.sessionRatings.easy;$('completion-summary').textContent=`${total} card${total===1?'':'s'} reviewed. Your spaced-repetition schedule is updated.`;$('completion-stats').innerHTML=`<div class="completion-stat">${success}<small>strong recalls</small></div><div class="completion-stat">${state.sessionRatings.hard}<small>improving</small></div><div class="completion-stat">${state.sessionRatings.again}<small>see again soon</small></div>`;$('completion-coach').textContent=success>=5?'🦊 You’re on a roll — your streak continues!':'🦊 Session complete! Each review strengthens the next recall.';document.querySelector('.study-panel').classList.add('session-finished');$('study-session-complete').hidden=false;await load()}
+    async function rateCard(rating){if(!state.study||state.busy)return;const card=state.studyCards[state.studyIndex];if(!state.flipped){state.flipped=true;renderStudy();toast('Reveal the answer first, then choose a rating.');return}state.busy=true;document.querySelectorAll('[data-rating]').forEach(button=>button.disabled=true);try{const result=await request(`/api/decks/${state.study.id}/reviews`,{method:'POST',body:JSON.stringify({cardId:card.id,cardPosition:Number(card.position||state.studyIndex),rating})});state.sessionRatings[rating]=(state.sessionRatings[rating]||0)+1;
+      // Update the in-memory deck immediately so the overview progress bar reacts
+      // without waiting for a full reload or a stale mastered_cards aggregate.
+      const deck=state.decks.find(d=>String(d.id)===String(state.study.id));
+      if(deck){const masteryKey=`${deck.id}:${card.id||card.position}`;if((rating==='good'||rating==='easy')&&!state.sessionMasteredKeys.has(masteryKey)){state.sessionMasteredKeys.add(masteryKey);deck.mastered_cards=Math.min(cardList(deck).length,Number(deck.mastered_cards||0)+1);}deck.updated_at=new Date().toISOString();drawDecks();}
+      state.studyIndex++;state.flipped=false;renderStudy();if(state.studyIndex>=state.studyCards.length){await finishStudy()}}catch(error){toast(error.message,true)}finally{state.busy=false;document.querySelectorAll('[data-rating]').forEach(button=>button.disabled=false)}}
+    function cardEditor(card={},index=0){return`<section class="card-editor" data-card-id="${esc(card.id||'')}"><div class="card-editor-head"><strong>Card ${index+1}</strong><button class="button button-small button-danger remove-card" type="button">Remove</button></div><div class="form-row"><label class="field">Question<textarea class="card-front" required maxlength="600">${esc(card.front||'')}</textarea></label><label class="field">Answer<textarea class="card-back" required maxlength="1800">${esc(card.back||'')}</textarea></label></div><div class="form-row"><label class="field">Type<input class="card-type" maxlength="32" value="${esc(card.card_type||card.type||'active recall')}"></label><label class="field">Difficulty<select class="card-difficulty"><option value="easy" ${card.difficulty==='easy'?'selected':''}>Easy</option><option value="medium" ${card.difficulty!=='easy'&&card.difficulty!=='hard'?'selected':''}>Medium</option><option value="hard" ${card.difficulty==='hard'?'selected':''}>Hard</option></select></label></div><div class="form-row"><label class="field">Why this matters<textarea class="card-explanation" maxlength="900">${esc(card.explanation||'')}</textarea></label><label class="field">Hint / exam tip<textarea class="card-exam-tip" maxlength="700">${esc(card.exam_tip||card.examTip||card.hint||'')}</textarea></label></div></section>`}
+    function wireEditorCards(){const list=$('editor-cards');list.querySelectorAll('.remove-card').forEach(button=>button.onclick=()=>{if(list.children.length===1){toast('A deck needs at least one card.',true);return}button.closest('.card-editor').remove();renumberCards()})}function renumberCards(){$('editor-cards').querySelectorAll('.card-editor strong').forEach((node,index)=>node.textContent=`Card ${index+1}`)}
+    function openEditor(deck){if(!deck)return;state.editing=deck;$('edit-title').value=deck.title||'';$('edit-subject').value=deck.subject||'General';$('edit-topic').value=deck.topic||'';$('editor-cards').innerHTML=cardList(deck).map(cardEditor).join('');$('generate-more').href=`ai.html?deck=${encodeURIComponent(deck.id)}&subject=${encodeURIComponent(deck.subject||'General')}`;wireEditorCards();openModal('editor-modal')}
+    async function saveEditor(event){event.preventDefault();if(!state.editing||state.busy)return;const title=$('edit-title').value.trim(),subject=$('edit-subject').value.trim()||'General',topic=$('edit-topic').value.trim();const cards=[...$('editor-cards').querySelectorAll('.card-editor')].map((row,index)=>({id:row.dataset.cardId,position:index,front:row.querySelector('.card-front').value.trim(),back:row.querySelector('.card-back').value.trim(),card_type:row.querySelector('.card-type').value.trim()||'active recall',explanation:row.querySelector('.card-explanation').value.trim(),exam_tip:row.querySelector('.card-exam-tip').value.trim(),difficulty:row.querySelector('.card-difficulty').value}));if(!title||cards.some(card=>!card.front||!card.back)){toast('Every card needs a question and an answer.',true);return}state.busy=true;try{const existing=cards.filter(card=>card.id),fresh=cards.filter(card=>!card.id);const updates=[supabase.from('flashcard_sets').update({title,subject,topic,updated_at:new Date().toISOString()}).eq('id',state.editing.id).eq('user_id',state.user.id),...existing.map(card=>supabase.from('flashcards').update({position:card.position,front:card.front,back:card.back,card_type:card.card_type,explanation:card.explanation,exam_tip:card.exam_tip,difficulty:card.difficulty,updated_at:new Date().toISOString()}).eq('id',card.id).eq('deck_id',state.editing.id).eq('user_id',state.user.id))];const deleted=cardList(state.editing).filter(old=>!existing.some(card=>card.id===old.id));updates.push(...deleted.map(card=>supabase.from('flashcards').delete().eq('id',card.id).eq('deck_id',state.editing.id).eq('user_id',state.user.id)));const results=await Promise.all(updates);const failed=results.find(result=>result.error);if(failed)throw failed.error;if(fresh.length){await request(`/api/decks/${state.editing.id}/cards`,{method:'POST',body:JSON.stringify({cards:fresh})})}const total=cards.length;const totalResult=await supabase.from('flashcard_sets').update({total_cards:total,mastered_cards:Math.min(Number(state.editing.mastered_cards||0),total),updated_at:new Date().toISOString()}).eq('id',state.editing.id).eq('user_id',state.user.id);if(totalResult.error)throw totalResult.error;closeModal('editor-modal');toast('Deck changes saved.');await load()}catch(error){toast(error.message||'Could not save changes.',true)}finally{state.busy=false}}
+    function openCreateDeck(){const form=$('create-deck-form');form.reset();openModal('create-deck-modal');setTimeout(()=>$('create-title').focus(),80)}
+    async function createDeck(event){event.preventDefault();if(state.busy)return;const title=$('create-title').value.trim();if(!title){toast('Give your deck a name.',true);return}const save=$('save-new-deck');state.busy=true;save.disabled=true;save.textContent='Creating…';try{await request('/api/decks',{method:'POST',body:JSON.stringify({title,subject:$('create-subject').value.trim()||'General',topic:$('create-topic').value.trim(),sourceType:'manual',sourceReference:$('create-description').value.trim(),cards:[]})});closeModal('create-deck-modal');toast('Deck created. Add cards yourself or generate them with AI.');await load()}catch(error){toast(error.message||'Could not create the deck.',true)}finally{state.busy=false;save.disabled=false;save.innerHTML='<i data-lucide="plus" width="14"></i> Create deck';window.lucide?.createIcons()}}
+    async function deleteDeck(id){const deck=state.decks.find(item=>item.id===id);if(!deck||!confirm(`Delete “${deck.title}” and every card/review record in it? This cannot be undone.`))return;try{await request(`/api/decks/${id}`,{method:'DELETE'});toast('Deck deleted.');await load()}catch(error){toast(error.message,true)}}
+    async function clearHistory(){if(!state.history.length||!confirm('Clear your entire saved review history? Your card schedules will remain unchanged.'))return;try{const result=await supabase.rpc('clear_flashcard_review_history');if(result.error)throw result.error;toast('Review history cleared.');await load()}catch(error){toast(error.message||'Could not clear history.',true)}}
+    function launchRequestedStudy(){if(state.autoStudyHandled)return;const params=new URLSearchParams(location.search),deckId=params.get('deck'),shouldStudy=params.get('study')==='1'||params.get('due')==='1';if(!shouldStudy)return;const deck=deckId?state.decks.find(item=>item.id===deckId):state.decks.find(item=>dueCards(item).length);if(deck){state.autoStudyHandled=true;startStudy(deck)}}
+    $('search').addEventListener('input',drawDecks);$('subject-filter').addEventListener('change',drawDecks);$('create-deck').onclick=openCreateDeck;$('close-create-deck').onclick=()=>closeModal('create-deck-modal');$('create-deck-form').onsubmit=createDeck;$('close-study').onclick=closeStudy;$('completion-back').onclick=closeStudy;$('completion-again').onclick=()=>startStudy(state.study);$('close-editor').onclick=()=>closeModal('editor-modal');$('study-card').onclick=()=>{state.flipped=!state.flipped;renderStudy()};$('study-prev').onclick=()=>moveStudy(-1);$('study-next').onclick=()=>moveStudy(1);document.querySelectorAll('[data-rating]').forEach(button=>button.onclick=()=>rateCard(button.dataset.rating));$('clear-history').onclick=clearHistory;$('add-card').onclick=()=>{$('editor-cards').insertAdjacentHTML('beforeend',cardEditor({},$('editor-cards').children.length));wireEditorCards();renumberCards()};$('deck-editor').onsubmit=saveEditor;document.addEventListener('keydown',event=>{if(!state.study||!$('study-session-complete').hidden)return;if(event.key==='Escape')closeStudy();if(event.key===' '){event.preventDefault();state.flipped=!state.flipped;renderStudy()}if(event.key==='ArrowLeft'){event.preventDefault();moveStudy(-1)}if(event.key==='ArrowRight'){event.preventDefault();moveStudy(1)}const map={1:'again',2:'hard',3:'good',4:'easy'};if(map[event.key])rateCard(map[event.key])});load();
+  })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <link rel="icon" href="../assets/images/novexa-tab-logo.png?v=43.41" type="image/png"><link rel="apple-touch-icon" href="../assets/images/novexa-tab-logo.png?v=43.41">
+  <script src="../js/theme-boot.js"></script><script src="../js/runtime-config.js"></script>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>Browse Papers — Novexa</title>
+	<link rel="stylesheet" href="../css/style.css" />
+	<link rel="stylesheet" href="../css/components.css" />
+	<link rel="stylesheet" href="../css/browse.css" />
+		<link rel="stylesheet" href="../css/global.css" />
+	<script src="../vendor/lucide.min.js"></script>
+	
+	<style>
+		/* Page-specific styles to match the requested premium layout */
+:root{--bg:#fafafa;--card:#ffffff;--muted:#6b7280;--purple:#7c3aed}
+			:root[data-theme="dark"]{--bg:#070812;--card:#101321;--muted:#aeb2c9;--purple:#b79cff}
+			body{background:var(--bg);font-family:Inter,system-ui,Segoe UI,Arial,sans-serif;color:#111;margin:0}
+		.container{max-width:1200px;margin:0 auto;padding:24px}
+		.qualifications{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;width:min(100%,532px);padding:5px;border:1px solid rgba(126,102,210,.2);border-radius:22px;background:linear-gradient(135deg,rgba(255,255,255,.92),rgba(107,83,191,.07));box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 12px 28px rgba(22,16,53,.12)}.qual-btn{position:relative!important;display:flex!important;align-items:center!important;gap:11px!important;min-height:66px!important;padding:9px 13px!important;border:1px solid rgba(105,86,160,.20)!important;border-radius:17px!important;background:linear-gradient(145deg,#fff,#f8f6ff)!important;color:#292b45!important;text-align:left!important;cursor:pointer;overflow:hidden;transition:transform .22s ease,border-color .22s ease,background .22s ease,box-shadow .22s ease}.qual-btn:after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,rgba(124,92,255,.10),transparent 42%);opacity:0;transition:opacity .22s ease;pointer-events:none}.qual-btn:hover{transform:translateY(-2px);border-color:rgba(124,92,255,.45)!important;box-shadow:0 10px 22px rgba(53,31,132,.12)}.qual-btn:hover:after{opacity:1}.qual-btn.active{background:linear-gradient(110deg,#7342f1 0%,#9f62ff 55%,#c187ff 100%)!important;border-color:rgba(255,255,255,.34)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.28),0 10px 24px rgba(104,60,229,.30)}.qual-icon{width:34px;height:34px;flex:0 0 34px;display:grid;place-items:center;border:1px solid rgba(105,86,160,.18);border-radius:11px;background:#f0ebff;color:#6845f5;box-shadow:inset 0 1px 0 rgba(255,255,255,.9)}.qual-btn.active .qual-icon{background:rgba(62,25,149,.28);color:#fff;border-color:rgba(255,255,255,.28)}.qual-icon svg{width:18px;height:18px}.qual-copy{min-width:0;display:grid;gap:3px}.qual-copy strong{font-size:14px;line-height:1;color:#30324d;letter-spacing:.01em}.qual-copy small{font-size:8px;line-height:1;color:#7f839d;font-weight:800;letter-spacing:.07em;white-space:nowrap}.qual-btn.active .qual-copy strong{color:#fff}.qual-btn.active .qual-copy small{color:rgba(255,255,255,.78)}.qual-arrow{width:14px;height:14px;margin-left:auto;color:#7a6c9d;flex:none}.qual-btn.active .qual-arrow{color:#fff}.qualifications + *{margin-top:28px}:root[data-theme="dark"] .qualifications{background:linear-gradient(135deg,rgba(255,255,255,.08),rgba(107,83,191,.12));border-color:rgba(166,143,255,.20);box-shadow:inset 0 1px 0 rgba(255,255,255,.10),0 12px 28px rgba(0,0,0,.24)}:root[data-theme="dark"] .qual-btn{border-color:rgba(166,143,255,.22)!important;background:linear-gradient(145deg,#151827,#101321)!important;color:#f7f4ff!important}:root[data-theme="dark"] .qual-btn:hover{border-color:rgba(166,130,255,.58)!important;box-shadow:0 10px 22px rgba(53,31,132,.24)}:root[data-theme="dark"] .qual-icon{border-color:rgba(255,255,255,.22);background:rgba(31,20,79,.35);color:#ded2ff}.qual-btn.active .qual-icon{background:rgba(62,25,149,.28);color:#fff}:root[data-theme="dark"] .qual-copy strong{color:#ece9fb}:root[data-theme="dark"] .qual-copy small{color:#8585a6}@media(max-width:620px){.qualifications{grid-template-columns:1fr;width:100%;border-radius:18px}.qual-btn{min-height:61px!important}.qual-copy strong{font-size:13px}.qual-copy small{font-size:7px}}@media(prefers-reduced-motion:reduce){.qual-btn{transition:none}.qual-btn:hover{transform:none}}
+		</style>
+</head>
+<body>
+	<div class="container layout-full">
+		<div id="site-navbar"></div>
+
+
+		<h2 style="margin:0">Browse Past Papers</h2>
+		<div style="display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-top:22px">
+			<div class="qualifications" id="qualifications" style="margin:0">
+<button class="qual-btn active" data-qual="IGCSE"><span class="qual-icon"><i data-lucide="graduation-cap"></i></span><span class="qual-copy"><strong>IGCSE</strong><small>INTERNATIONAL GCSE</small></span><i class="qual-arrow" data-lucide="arrow-up-right"></i></button>
+					<button class="qual-btn" data-qual="IAS/IAL"><span class="qual-icon"><i data-lucide="layers-3"></i></span><span class="qual-copy"><strong>IAS / IAL</strong><small>ADVANCED LEVEL</small></span><i class="qual-arrow" data-lucide="arrow-up-right"></i></button>
+			</div>
+		</div>
+
+			<div id="subjectsContainer" style="margin-top:28px"></div>
+		</div>
+
+    <div id="paperViewerModal" class="paper-viewer-modal" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="paperViewerModalTitle">
+      <div class="paper-viewer-backdrop" data-close-paper-viewer></div>
+      <section class="paper-viewer-window">
+        <header class="paper-viewer-modal-header">
+          <div class="paper-viewer-modal-title-wrap"><span class="paper-viewer-kicker">NOVEXA PAPER VIEWER</span><h2 id="paperViewerModalTitle">Loading paper…</h2></div>
+          <div class="paper-viewer-modal-actions"><button id="paperViewerNewTab" type="button" class="paper-viewer-action" title="Open viewer in new tab"><i data-lucide="external-link"></i><span>New tab</span></button><button type="button" class="paper-viewer-action close" data-close-paper-viewer title="Close viewer"><i data-lucide="x"></i><span>Close</span></button></div>
+        </header>
+        <div class="paper-viewer-frame-wrap"><div id="paperViewerLoading" class="paper-viewer-loading"><span class="catalog-spinner"></span><span>Opening paper viewer…</span></div><iframe id="paperViewerFrame" title="Embedded PDF paper viewer"></iframe></div>
+      </section>
+    </div>
+
+	<script src="../vendor/supabase.min.js"></script>
+	<script src="../js/supabase.js"></script>
+	<script src="../js/auth.js"></script>
+	<script src="../js/components/navbar.js"></script>
+	<script src="../js/pages/browse.js?v=20260814-paper-ai"></script>
+</body>
+</html>

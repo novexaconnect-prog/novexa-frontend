@@ -1,0 +1,556 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --primary: #6F4BFF;
+  --accent: #9B6CFF;
+  --background: #F8F9FF;
+  --surface: #FFFFFF;
+  --surface-soft: rgba(255, 255, 255, 0.82);
+  --text: #1D2145;
+  --muted: #69728F;
+  --border: rgba(110, 92, 255, 0.16);
+  --shadow-soft: 0 18px 40px rgba(111, 75, 255, 0.14);
+  --shadow-strong: 0 30px 60px rgba(110, 92, 255, 0.15);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+  background: var(--background);
+  color: var(--text);
+}
+
+img,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: rgba(111, 75, 255, 0.16);
+  color: var(--text);
+}
+
+.btn,
+button {
+  transition: all 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 0.95rem 1.6rem;
+  box-shadow: var(--shadow-soft);
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, #6F4BFF 0%, #8E66FF 100%);
+  color: #ffffff;
+}
+
+.card {
+  background: var(--surface-soft);
+  backdrop-filter: blur(24px);
+  border-radius: 28px;
+  box-shadow: var(--shadow-strong);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+}
+
+.card-hover {
+  transition: transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1), box-shadow 0.35s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-8px) scale(1.02);
+}
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(18px);
+  animation: fadeUp 0.75s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-18px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(111, 75, 255, 0.08);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(111, 75, 255, 0.24);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(111, 75, 255, 0.34);
+}
+
+/* Novexa smooth global polish */
+:root{--novexa-ease:cubic-bezier(.23,1,.32,1)}
+body{overflow-x:hidden;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+:focus-visible{outline:3px solid rgba(104,67,245,.28);outline-offset:3px}
+.site-header{transition:box-shadow .25s var(--novexa-ease),transform .25s var(--novexa-ease),border-color .25s ease}
+.site-header:hover{box-shadow:0 16px 42px rgba(43,32,92,.11);transform:translateY(-1px)}
+.site-header .nav-links a{transition:color .2s ease,background .2s ease,transform .2s var(--novexa-ease)}
+.panel,.card,.tool-card,.notes-side-card,.stat-card,.quick-action{transition:transform .24s var(--novexa-ease),box-shadow .24s var(--novexa-ease),border-color .24s ease}
+.panel:hover,.card:hover,.tool-card:hover,.notes-side-card:hover,.stat-card:hover,.quick-action:hover{transform:translateY(-3px);box-shadow:0 20px 48px rgba(43,32,92,.1)}
+@media(max-width:760px){.container{padding-left:14px;padding-right:14px}.site-header{width:calc(100% - 18px);max-width:none}.site-header:hover{transform:none}.nav-links{scrollbar-width:none}.nav-links::-webkit-scrollbar{display:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.site-header:hover,.panel:hover,.card:hover,.tool-card:hover,.notes-side-card:hover,.stat-card:hover,.quick-action:hover{transform:none}}
+
+/* Novexa theme system: synchronized, persistent, and transition-safe. */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --background: #070812;
+  --surface: #101321;
+  --surface-soft: rgba(16, 19, 33, .92);
+  --text: #ffffff;
+  --muted: #a8abc2;
+  --border: rgba(255,255,255,.08);
+  --shadow-soft: 0 18px 40px rgba(0,0,0,.28);
+  --shadow-strong: 0 30px 60px rgba(0,0,0,.34);
+}
+html, body, .site-header, .panel, .card, .tool-card, .stat-card, .quick-action, .subject-card,
+.dashboard-page, .dashboard-sidebar, .dashboard-main, .composer-wrap, .ai-page, .settings-content,
+.settings-nav, input, textarea, select, button {
+  transition: background-color .3s cubic-bezier(.23,1,.32,1), color .3s cubic-bezier(.23,1,.32,1), border-color .3s ease, box-shadow .3s ease;
+}
+/* Theme changes use CSS variables only; no full-page overlay or backdrop layer. */
+html.theme-transitioning::before { content: none; }
+
+:root[data-theme="dark"] body,
+:root[data-theme="dark"] .dashboard-page,
+:root[data-theme="dark"] .landing-page { background: #070812; color: #fff; }
+:root[data-theme="dark"] .site-header,
+:root[data-theme="dark"] .dashboard-sidebar,
+:root[data-theme="dark"] .panel,
+:root[data-theme="dark"] .card,
+:root[data-theme="dark"] .tool-card,
+:root[data-theme="dark"] .stat-card,
+:root[data-theme="dark"] .quick-action,
+:root[data-theme="dark"] .subject-card,
+:root[data-theme="dark"] .composer-wrap,
+:root[data-theme="dark"] .settings-nav,
+:root[data-theme="dark"] .settings-content { background: #101321; border-color: rgba(255,255,255,.08); color: #fff; }
+:root[data-theme="dark"] p,
+:root[data-theme="dark"] small,
+:root[data-theme="dark"] .muted,
+:root[data-theme="dark"] .dashboard-heading p,
+:root[data-theme="dark"] .stat-label,
+:root[data-theme="dark"] .plan-info small,
+:root[data-theme="dark"] .exam-row>div small { color: #a8abc2; }
+:root[data-theme="dark"] input,
+:root[data-theme="dark"] textarea,
+:root[data-theme="dark"] select { background: #0b0d18; color: #fff; border-color: rgba(255,255,255,.12); }
+:root[data-theme="dark"] .nav-links a,
+:root[data-theme="dark"] .user-label { color: #f4f2ff; }
+:root[data-theme="dark"] .nav-links a.active,
+:root[data-theme="dark"] .nav-links a:hover { background: rgba(124,77,255,.22); color: #b89cff; }
+:root[data-theme="dark"] .site-logo { filter: none; }
+.site-logo-dark { display: none; }
+:root[data-theme="dark"] .site-logo-light { display: none; }
+:root[data-theme="dark"] .site-logo-dark { display: block; }
+.theme-toggle { width: 38px; height: 38px; display: inline-grid; place-items: center; border: 1px solid rgba(108,75,255,.18); border-radius: 12px; background: transparent; color: #6d4cff; cursor: pointer; }
+.theme-toggle:hover { transform: rotate(12deg) translateY(-1px); background: rgba(124,77,255,.12); }
+.theme-toggle svg { width: 19px; height: 19px; }
+@media (max-width: 1100px) { .site-header { grid-template-columns: 132px minmax(0,1fr) 208px; } .site-header .nav-links { gap: 0; } .site-header .nav-links a { padding-inline: 8px; font-size: 12px; } }
+@media (max-width: 760px) { .site-header { grid-template-columns: 1fr auto; } .site-header .nav-right { gap: 4px; } .site-header .nav-instagram { display: none; } .site-header .nav-links { grid-column: 1/-1; } .theme-toggle { width: 34px; height: 34px; } }
+@media (prefers-reduced-motion: reduce) { html.theme-transitioning::before { display: none; } }
+
+/* Login pages must remain scrollable on short screens and mobile keyboards. */
+.login-page, body.login-page { min-height: 100dvh; overflow-y: auto; overflow-x: hidden; }
+.login-background { min-height: 100dvh; height: auto; padding: 18px 0 40px; }
+@media (max-width: 700px) { .login-background { padding: 10px 0 28px; } .login-card { min-height: auto !important; } }
+
+
+/* Unified dark-mode contract for every Novexa surface. Page styles may remain light-first, but these tokens win when the persisted theme is dark. */
+:root[data-theme="dark"] body,
+:root[data-theme="dark"] .page,
+:root[data-theme="dark"] .landing-page,
+:root[data-theme="dark"] .tool-page,
+:root[data-theme="dark"] .payment-page,
+:root[data-theme="dark"] .ai-app-page,
+:root[data-theme="dark"] .notes-page,
+:root[data-theme="dark"] .dashboard-page { background:#070812 !important; color:#f8f7ff !important; }
+:root[data-theme="dark"] main,
+:root[data-theme="dark"] section,
+:root[data-theme="dark"] article,
+:root[data-theme="dark"] .panel,
+:root[data-theme="dark"] .card,
+:root[data-theme="dark"] .tool-card,
+:root[data-theme="dark"] .tool-row,
+:root[data-theme="dark"] .tool-shell,
+:root[data-theme="dark"] .modal,
+:root[data-theme="dark"] .dialog { color:#f8f7ff; }
+:root[data-theme="dark"] h1,
+:root[data-theme="dark"] h2,
+:root[data-theme="dark"] h3,
+:root[data-theme="dark"] h4,
+:root[data-theme="dark"] strong,
+:root[data-theme="dark"] label,
+:root[data-theme="dark"] th { color:#f8f7ff; }
+:root[data-theme="dark"] .site-header,
+:root[data-theme="dark"] .dashboard-sidebar,
+:root[data-theme="dark"] .dashboard-main,
+:root[data-theme="dark"] .panel,
+:root[data-theme="dark"] .card,
+:root[data-theme="dark"] .tool-card,
+:root[data-theme="dark"] .tool-row,
+:root[data-theme="dark"] .tool-shell,
+:root[data-theme="dark"] .modal-card,
+:root[data-theme="dark"] .dialog,
+:root[data-theme="dark"] .composer-wrap,
+:root[data-theme="dark"] .settings-nav,
+:root[data-theme="dark"] .settings-content { background:#101321 !important; border-color:rgba(255,255,255,.10) !important; box-shadow:0 24px 70px rgba(0,0,0,.28); }
+:root[data-theme="dark"] p,
+:root[data-theme="dark"] span,
+:root[data-theme="dark"] li,
+:root[data-theme="dark"] small,
+:root[data-theme="dark"] .muted,
+:root[data-theme="dark"] .tool-note { color:#aeb2c9; }
+:root[data-theme="dark"] input,
+:root[data-theme="dark"] textarea,
+:root[data-theme="dark"] select,
+:root[data-theme="dark"] button:not(.btn-primary):not(.nav-login-btn) { background:#0b0e1b; color:#f5f3ff; border-color:rgba(255,255,255,.14); }
+:root[data-theme="dark"] input::placeholder,
+:root[data-theme="dark"] textarea::placeholder { color:#747a98; }
+:root[data-theme="dark"] a { color:#c1a7ff; }
+:root[data-theme="dark"] .site-header a { color:#f4f2ff; }
+:root[data-theme="dark"] .site-header .nav-links a.active,
+:root[data-theme="dark"] .site-header .nav-links a:hover { color:#d1bdff; background:rgba(124,77,255,.22); }
+:root[data-theme="dark"] .site-header .user-menu:hover { background:rgba(124,77,255,.18); }
+:root[data-theme="dark"] table,
+:root[data-theme="dark"] thead,
+:root[data-theme="dark"] tbody,
+:root[data-theme="dark"] tr,
+:root[data-theme="dark"] td { background:#101321 !important; color:#f3f1ff; border-color:rgba(255,255,255,.10) !important; }
+:root[data-theme="dark"] .empty-state,
+:root[data-theme="dark"] .empty-notes { background:#101321 !important; color:#aeb2c9; border-color:rgba(255,255,255,.16); }
+
+
+/* Always-visible theme control. */
+.theme-toggle { width:40px !important; height:40px !important; min-width:40px; display:inline-grid !important; place-items:center; flex:0 0 40px; border:1px solid rgba(108,75,255,.28) !important; border-radius:14px !important; background:rgba(255,255,255,.72) !important; color:#6040e8 !important; opacity:1 !important; visibility:visible !important; position:relative; z-index:3; transition:transform .25s cubic-bezier(.23,1,.32,1),background .25s ease,border-color .25s ease,box-shadow .25s ease; }
+.theme-toggle:hover { transform:translateY(-2px) rotate(8deg) !important; background:rgba(108,75,255,.12) !important; border-color:rgba(108,75,255,.48) !important; box-shadow:0 8px 18px rgba(108,75,255,.18); }
+.theme-toggle i, .theme-toggle svg { width:20px !important; height:20px !important; display:block !important; stroke-width:2.4px; }
+:root[data-theme="dark"] .theme-toggle { background:rgba(20,24,42,.92) !important; border-color:rgba(197,177,255,.42) !important; color:#d0baff !important; }
+:root[data-theme="dark"] .theme-toggle:hover { background:rgba(108,75,255,.28) !important; border-color:rgba(213,195,255,.72) !important; }
+@media (prefers-reduced-motion: reduce) { .theme-toggle { transition:none !important; } .theme-toggle:hover { transform:none !important; } }
+
+
+/* Thin chrome correction for Home stats and the profile popover. */
+.stats { border:1px solid rgba(236,235,250,.72) !important; box-shadow:0 12px 34px rgba(61,61,110,.06) !important; }
+.nav-popover { border:1px solid rgba(230,226,239,.62) !important; box-shadow:0 14px 34px rgba(35,30,79,.11) !important; padding:5px !important; }
+.nav-popover button { border:0 !important; box-shadow:none !important; }
+:root[data-theme="dark"] .stats { background:#101321 !important; border:1px solid rgba(255,255,255,.10) !important; box-shadow:0 18px 45px rgba(0,0,0,.24) !important; padding:1rem !important; }
+:root[data-theme="dark"] .stats .stat-item { background:transparent !important; }
+:root[data-theme="dark"] .nav-popover { background:#101321 !important; border:1px solid rgba(255,255,255,.12) !important; box-shadow:0 16px 38px rgba(0,0,0,.32) !important; }
+:root[data-theme="dark"] .nav-popover button { background:transparent !important; border:0 !important; color:#f5f3ff !important; }
+
+
+/* Notifications page: match Novexa's black theme. */
+:root[data-theme="dark"] .notification-page { background:radial-gradient(circle at 86% 0%,rgba(108,75,255,.16),transparent 28%),linear-gradient(180deg,#070812,#0b0d18) !important; color:#f6f3ff; }
+:root[data-theme="dark"] .notification-page .notification-kicker { color:#b79cff; }
+:root[data-theme="dark"] .notification-page .notification-hero h1 { color:#f7f5ff; }
+:root[data-theme="dark"] .notification-page .notification-hero p,
+:root[data-theme="dark"] .notification-page .notification-count { color:#aeb2c9; }
+:root[data-theme="dark"] .notification-page .notification-mark { background:#101321 !important; border:1px solid rgba(255,255,255,.14) !important; color:#eeeaff; box-shadow:0 10px 24px rgba(0,0,0,.2); }
+:root[data-theme="dark"] .notification-page .notification-list { color:#f7f5ff; }
+:root[data-theme="dark"] .notification-page .notification-card { background:#101321 !important; border:1px solid rgba(255,255,255,.12) !important; box-shadow:0 14px 30px rgba(0,0,0,.22); }
+:root[data-theme="dark"] .notification-page .notification-card:hover { border-color:rgba(167,139,250,.55) !important; box-shadow:0 18px 38px rgba(0,0,0,.34); }
+:root[data-theme="dark"] .notification-page .notification-card.unread { border-left:3px solid #8f6bff !important; background:#121527 !important; }
+:root[data-theme="dark"] .notification-page .notification-card.featured { background:linear-gradient(135deg,#17152c,#101321) !important; border-color:rgba(143,107,255,.48) !important; }
+:root[data-theme="dark"] .notification-page .notification-copy h2 { color:#f2efff; }
+:root[data-theme="dark"] .notification-page .notification-copy p { color:#b8bbcf; }
+:root[data-theme="dark"] .notification-page .notification-time { color:#858aa3; }
+:root[data-theme="dark"] .notification-page .notification-icon { background:#25203d; color:#b69bff; }
+:root[data-theme="dark"] .notification-page .notification-icon.credits { background:#332a1d; color:#f3bd55; }
+:root[data-theme="dark"] .notification-page .notification-icon.streak { background:#342719; color:#f3a15e; }
+:root[data-theme="dark"] .notification-page .notification-icon.content { background:#17352f; color:#76d7c1; }
+:root[data-theme="dark"] .notification-page .notification-progress { background:#25283a; }
+:root[data-theme="dark"] .notification-page .notification-action { color:#b79cff; }
+:root[data-theme="dark"] .notification-page .notification-empty { background:#101321 !important; border-color:rgba(255,255,255,.16) !important; color:#adb1c6; }
+:root[data-theme="dark"] .notification-page .notification-empty h2 { color:#f3f0ff; }
+:root[data-theme="dark"] .notification-page .notification-help { background:#101321 !important; border:1px solid rgba(255,255,255,.1); color:#9298ae; }
+
+
+/* =========================================================
+   Novexa premium visual pass
+   Shared rhythm, glass surfaces, focus states, and theme-safe motion.
+   ========================================================= */
+:root {
+  --novexa-ease: cubic-bezier(.23,1,.32,1);
+  --novexa-radius-sm: 12px;
+  --novexa-radius-md: 18px;
+  --novexa-radius-lg: 24px;
+  --novexa-surface-glow: rgba(124,77,255,.10);
+}
+
+body {
+  background-image: radial-gradient(circle at 90% -10%, rgba(124,77,255,.08), transparent 28%), linear-gradient(180deg, var(--background), color-mix(in srgb, var(--background) 88%, #fff 12%));
+}
+
+button, a, input, textarea, select { -webkit-tap-highlight-color: transparent; }
+button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible { outline:2px solid #a98cff !important; outline-offset:3px; }
+
+/* Shared controls feel intentional instead of browser-default. */
+button:not(.nav-login-btn):not(.theme-toggle),
+.btn,
+.btn-primary,
+.flash-primary,
+.flash-ghost,
+.flash-icon-btn,
+.lords-btn,
+.qual-btn {
+  border-radius:var(--novexa-radius-sm);
+  transition:transform .22s var(--novexa-ease), box-shadow .22s var(--novexa-ease), background-color .22s ease, border-color .22s ease, color .22s ease;
+}
+button:not(:disabled):hover, .btn:hover, .flash-primary:hover, .flash-ghost:hover, .lords-btn:hover, .qual-btn:hover { transform:translateY(-2px); }
+button:not(:disabled):active, .btn:active, .flash-primary:active, .flash-ghost:active, .lords-btn:active, .qual-btn:active { transform:scale(.975); }
+
+/* Shared page rhythm. */
+.tool-page, .payment-page, .ai-app-page, .notes-page, .notification-page, .landing-page { min-height:100vh; }
+.tool-page main, .payment-page main, .ai-app-page main, .notes-page main, .notification-page main { animation:novexaPageIn .48s var(--novexa-ease) both; }
+@keyframes novexaPageIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:none; } }
+
+/* Common cards get a quieter border and more dimensional hover. */
+.panel, .card, .tool-card, .flash-metric, .flash-deck, .notification-card, .notes-side-card, .focus-card, .focus-side-card, .settings-content, .settings-nav, .pricing-card, .price-card {
+  border-radius:var(--novexa-radius-md);
+  border-color:rgba(111,75,255,.12);
+  box-shadow:0 14px 42px rgba(39,28,89,.07);
+}
+.panel:hover, .card:hover, .tool-card:hover, .flash-metric:hover, .flash-deck:hover, .notification-card:hover, .notes-side-card:hover, .focus-card:hover, .focus-side-card:hover, .pricing-card:hover, .price-card:hover {
+  border-color:rgba(137,105,255,.28);
+  box-shadow:0 22px 52px rgba(52,35,123,.12);
+}
+
+/* Refined inputs and search controls. */
+input, textarea, select { border-radius:var(--novexa-radius-sm); transition:border-color .2s ease, box-shadow .2s ease, background-color .2s ease; }
+input:hover, textarea:hover, select:hover { border-color:rgba(124,77,255,.35); }
+input:focus, textarea:focus, select:focus { border-color:rgba(124,77,255,.62) !important; box-shadow:0 0 0 4px rgba(124,77,255,.10) !important; outline:0; }
+
+/* Light-theme surfaces. */
+:root:not([data-theme="dark"]) .site-header { background:rgba(255,255,255,.82) !important; box-shadow:0 14px 42px rgba(39,28,89,.09); }
+:root:not([data-theme="dark"]) .tool-page, :root:not([data-theme="dark"]) .landing-page { background-image:radial-gradient(circle at 90% -10%, rgba(124,77,255,.10), transparent 28%), linear-gradient(180deg,#fbfaff,#f5f7fc); }
+
+/* Black-theme surfaces. */
+:root[data-theme="dark"] body { background-image:radial-gradient(circle at 90% -10%, rgba(124,77,255,.16), transparent 30%), linear-gradient(180deg,#070812,#0b0e1b); }
+:root[data-theme="dark"] .site-header { background:rgba(12,15,28,.86) !important; border-color:rgba(255,255,255,.12) !important; box-shadow:0 18px 48px rgba(0,0,0,.3); }
+:root[data-theme="dark"] .panel, :root[data-theme="dark"] .card, :root[data-theme="dark"] .tool-card, :root[data-theme="dark"] .flash-metric, :root[data-theme="dark"] .flash-deck, :root[data-theme="dark"] .notification-card, :root[data-theme="dark"] .notes-side-card, :root[data-theme="dark"] .focus-card, :root[data-theme="dark"] .focus-side-card, :root[data-theme="dark"] .pricing-card, :root[data-theme="dark"] .price-card { background:rgba(16,19,33,.88) !important; border-color:rgba(255,255,255,.11) !important; box-shadow:0 20px 58px rgba(0,0,0,.24); }
+:root[data-theme="dark"] .panel:hover, :root[data-theme="dark"] .card:hover, :root[data-theme="dark"] .tool-card:hover, :root[data-theme="dark"] .flash-metric:hover, :root[data-theme="dark"] .flash-deck:hover, :root[data-theme="dark"] .notification-card:hover, :root[data-theme="dark"] .notes-side-card:hover, :root[data-theme="dark"] .focus-card:hover, :root[data-theme="dark"] .focus-side-card:hover, :root[data-theme="dark"] .pricing-card:hover, :root[data-theme="dark"] .price-card:hover { border-color:rgba(193,164,255,.38) !important; box-shadow:0 26px 70px rgba(0,0,0,.34); }
+:root[data-theme="dark"] input, :root[data-theme="dark"] textarea, :root[data-theme="dark"] select { background:rgba(9,12,23,.86) !important; border-color:rgba(255,255,255,.13) !important; color:#f7f5ff !important; }
+:root[data-theme="dark"] input:focus, :root[data-theme="dark"] textarea:focus, :root[data-theme="dark"] select:focus { border-color:rgba(193,164,255,.64) !important; box-shadow:0 0 0 4px rgba(143,107,255,.16) !important; }
+
+/* Small screens: preserve breathing room without horizontal overflow. */
+@media (max-width:760px) {
+  .tool-page main, .payment-page main, .ai-app-page main, .notes-page main, .notification-page main { animation:none; }
+  .panel, .card, .tool-card, .flash-metric, .flash-deck, .notification-card, .notes-side-card, .focus-card, .focus-side-card, .pricing-card, .price-card { border-radius:16px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .tool-page main, .payment-page main, .ai-app-page main, .notes-page main, .notification-page main { animation:none !important; }
+  button:not(:disabled):hover, .btn:hover, .flash-primary:hover, .flash-ghost:hover, .lords-btn:hover, .qual-btn:hover, .panel:hover, .card:hover, .tool-card:hover { transform:none !important; }
+}
+
+
+/* =========================================================
+   Novexa motion + visual effects pass
+   GPU-friendly transforms/opacity only, with reduced-motion fallback.
+   ========================================================= */
+:root { --novexa-motion-out:cubic-bezier(.23,1,.32,1); --novexa-lavender:#c4a9ff; }
+
+body::before {
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+  opacity:.55;
+  background:radial-gradient(circle at 8% 18%,rgba(124,77,255,.07),transparent 24%),radial-gradient(circle at 92% 76%,rgba(174,120,255,.06),transparent 22%);
+  animation:novexaAmbient 16s ease-in-out infinite alternate;
+}
+.site-header, main, footer { position:relative; z-index:1; }
+@keyframes novexaAmbient { from{transform:translate3d(-1%,0,0) scale(1)} to{transform:translate3d(1%,1%,0) scale(1.04)} }
+
+/* A quiet moving highlight makes key surfaces feel alive on hover. */
+.tool-card, .flash-deck, .notification-card, .notes-side-card, .focus-card, .focus-side-card, .stat-card, .feature-card, .pricing-card, .price-card, .lords-subject {
+  position:relative;
+  overflow:hidden;
+}
+.tool-card::after, .flash-deck::after, .notification-card::after, .notes-side-card::after, .focus-card::after, .focus-side-card::after, .stat-card::after, .feature-card::after, .pricing-card::after, .price-card::after, .lords-subject::after {
+  content:"";
+  position:absolute;
+  inset:-80% -30%;
+  pointer-events:none;
+  opacity:0;
+  transform:translateX(-55%) rotate(18deg);
+  background:linear-gradient(105deg,transparent 42%,rgba(255,255,255,.18) 50%,transparent 58%);
+  transition:opacity .24s ease,transform .7s var(--novexa-motion-out);
+}
+.tool-card:hover::after, .flash-deck:hover::after, .notification-card:hover::after, .notes-side-card:hover::after, .focus-card:hover::after, .focus-side-card:hover::after, .stat-card:hover::after, .feature-card:hover::after, .pricing-card:hover::after, .price-card:hover::after, .lords-subject:hover::after { opacity:1; transform:translateX(55%) rotate(18deg); }
+
+/* Hero and primary controls gain a subtle gradient sweep instead of a flat hover. */
+.btn-primary, .nav-login-btn, .flash-primary, .hero-cta, .cta-button, .pricing-cta, .ai-suggestion button {
+  background-size:200% 100%;
+  background-position:0 50%;
+  transition:transform .22s var(--novexa-motion-out),box-shadow .22s var(--novexa-motion-out),background-position .6s var(--novexa-motion-out),filter .22s ease;
+}
+.btn-primary:hover, .nav-login-btn:hover, .flash-primary:hover, .hero-cta:hover, .cta-button:hover, .pricing-cta:hover, .ai-suggestion button:hover { background-position:100% 50%; filter:saturate(1.08) brightness(1.04); box-shadow:0 16px 34px rgba(108,75,255,.28); }
+
+/* Icons gently settle into place when their parent is hovered. */
+.tool-card:hover i, .flash-deck:hover i, .notification-card:hover i, .notes-side-card:hover i, .focus-card:hover i, .stat-card:hover i, .feature-card:hover i, .quick-action:hover i, .lords-subject:hover i { animation:novexaIconNudge .42s var(--novexa-motion-out) both; }
+@keyframes novexaIconNudge { 0%{transform:translateY(0) rotate(0)} 55%{transform:translateY(-3px) rotate(-4deg)} 100%{transform:translateY(0) rotate(0)} }
+
+/* Entrance choreography for repeated content, capped to avoid over-animation. */
+.tool-card:nth-child(2), .flash-deck:nth-child(2), .feature-card:nth-child(2), .stats:nth-child(2), .notification-card:nth-child(2) { animation-delay:.06s; }
+.tool-card:nth-child(3), .flash-deck:nth-child(3), .feature-card:nth-child(3), .stats:nth-child(3), .notification-card:nth-child(3) { animation-delay:.12s; }
+.tool-card:nth-child(4), .flash-deck:nth-child(4), .feature-card:nth-child(4), .stats:nth-child(4), .notification-card:nth-child(4) { animation-delay:.18s; }
+
+/* Dark mode receives a restrained lavender aura instead of white shine. */
+:root[data-theme="dark"] body::before { opacity:.8; background:radial-gradient(circle at 8% 18%,rgba(124,77,255,.13),transparent 24%),radial-gradient(circle at 92% 76%,rgba(174,120,255,.10),transparent 22%); }
+:root[data-theme="dark"] .tool-card::after, :root[data-theme="dark"] .flash-deck::after, :root[data-theme="dark"] .notification-card::after, :root[data-theme="dark"] .notes-side-card::after, :root[data-theme="dark"] .focus-card::after, :root[data-theme="dark"] .focus-side-card::after, :root[data-theme="dark"] .stat-card::after, :root[data-theme="dark"] .feature-card::after, :root[data-theme="dark"] .pricing-card::after, :root[data-theme="dark"] .price-card::after, :root[data-theme="dark"] .lords-subject::after { background:linear-gradient(105deg,transparent 42%,rgba(196,169,255,.16) 50%,transparent 58%); }
+
+@media (prefers-reduced-motion:reduce) {
+  body::before { animation:none !important; }
+  .tool-card::after, .flash-deck::after, .notification-card::after, .notes-side-card::after, .focus-card::after, .focus-side-card::after, .stat-card::after, .feature-card::after, .pricing-card::after, .price-card::after, .lords-subject::after { display:none !important; }
+  .tool-card:hover i, .flash-deck:hover i, .notification-card:hover i, .notes-side-card:hover i, .focus-card:hover i, .stat-card:hover i, .feature-card:hover i, .quick-action:hover i, .lords-subject:hover i { animation:none !important; }
+}
+
+
+/* =====================================================================
+   Application-wide responsive foundation. These rules protect every page
+   from horizontal overflow and provide consistent stack points for shared
+   screen layouts without changing the desktop information hierarchy.
+   ===================================================================== */
+html, body { width:100%; max-width:100%; overflow-x:clip; }
+main, section, article, aside, header, footer, [class$="-shell"], [class$="-layout"], [class$="-grid"] { min-width:0; }
+img, picture, video, canvas, iframe { max-width:100%; }
+input, select, textarea, button { max-width:100%; }
+table { max-width:100%; }
+
+@media (max-width:1100px) {
+  .dashboard-shell,
+  .notes-layout,
+  .settings-panel,
+  .article-layout,
+  .legal-layout,
+  .contact-grid,
+  .payment-shell { min-width:0; }
+  .dashboard-grid,
+  .stats-grid,
+  .quick-grid,
+  .plans-grid,
+  .subject-grid,
+  .tool-grid,
+  .article-grid,
+  .category-grid,
+  .chart-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
+
+@media (max-width:760px) {
+  :root { --space-md:20px; --space-lg:28px; --space-xl:42px; }
+  body { font-size:16px; }
+  .container { width:min(100%, 100%); padding-left:14px; padding-right:14px; }
+  .dashboard-shell,
+  .notes-layout,
+  .settings-panel,
+  .article-layout,
+  .legal-layout,
+  .contact-grid,
+  .payment-shell,
+  .pet-wrap,
+  .tool-grid { grid-template-columns:1fr !important; }
+  .dashboard-grid,
+  .stats-grid,
+  .quick-grid,
+  .plans-grid,
+  .subject-grid,
+  .article-grid,
+  .category-grid,
+  .chart-grid,
+  .filters-grid,
+  .form-grid { grid-template-columns:repeat(2,minmax(0,1fr)) !important; }
+  table { display:block; width:100%; overflow-x:auto; -webkit-overflow-scrolling:touch; white-space:nowrap; }
+  th, td { white-space:normal; }
+  .modal, .dialog, .modal-card { max-width:calc(100vw - 20px); }
+  .btn, .btn-primary { min-height:42px; }
+}
+
+@media (max-width:520px) {
+  h1 { font-size:clamp(1.7rem,8vw,2.25rem); }
+  h2 { font-size:clamp(1.3rem,6vw,1.75rem); }
+  .dashboard-grid,
+  .stats-grid,
+  .quick-grid,
+  .plans-grid,
+  .subject-grid,
+  .article-grid,
+  .category-grid,
+  .chart-grid,
+  .filters-grid,
+  .form-grid { grid-template-columns:1fr !important; }
+  .container { padding-left:12px; padding-right:12px; }
+  .btn, .btn-primary { width:100%; }
+  .modal, .dialog { padding:14px; }
+}
+
+@media (max-height:700px) and (min-width:761px) {
+  .site-header { margin-top:8px !important; min-height:62px !important; }
+  .site-header .nav-links a { padding-top:8px !important; padding-bottom:8px !important; }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  body::before { animation:none; }
+}
+
+/* Protected-page guard: keep private content hidden until Supabase confirms the session. */
+body.auth-pending{opacity:0!important;pointer-events:none!important;}
+body.auth-pending::before{content:'';position:fixed;inset:0;background:var(--page-bg,#0b0d17);z-index:99999;}

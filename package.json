@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "@supabase/supabase-js": "^2.112.2"
+  },
+  "name": "novexa-frontend",
+  "private": true,
+  "scripts": {
+    "start": "node start-novexa.js",
+    "start:backend": "npm --prefix ../backend start",
+    "install:backend": "npm --prefix ../backend install"
+  }
+}

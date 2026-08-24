@@ -1,0 +1,14 @@
+<!doctype html><html><head><meta charset="utf-8">
+<script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"],["$$","$$"]],processEscapes:true,processEnvironments:true,packages:{'[+]':['ams']}},options:{skipHtmlTags:['script','style','textarea','pre','code'],ignoreHtmlClass:'tex2jax_ignore',processHtmlClass:'mathjax_process'},svg:{fontCache:'global'},startup:{typeset:false}};</script>
+<script src="vendor/mathjax-tex-svg-3.2.2.js"></script><script src="vendor/marked.min.js"></script><script src="vendor/purify.min.js"></script><script src="js/utils/math-format.js?v=43.52"></script>
+<style>.math{font-size:18px}</style></head><body><div id="out" class="math"></div><script>
+const cases=[
+`Step 2: Calculate the total perimeter\n\nSubstitute r = 2\\sqrt{6} and s = \\frac{5\\sqrt{6}}{2}\n\nPerimeter = 2(2\\sqrt{6}) + \\frac{5\\sqrt{6}}{2}\n\\]\n\nFinal answer: \\frac{13\\sqrt{6}}{2} cm`,
+`Z = \\frac{X-\\mu}{\\sigma}`,
+`frac{13sqrt{6}}{2}`,
+`\\[A = \\frac{0.5}{2}(1+2)\\]`
+];
+function render(text){let src=window.NovexaMath.prepareMarkdown(text);let math=[];const put=(latex,display)=>{const t='@@M'+math.length+'@@';math.push({t,latex,display});return t};src=src.replace(/\\\\[\\s\\S]*?\\\\]/g, m=>m).replace(/\\\\\[([\\s\\S]*?)\\\\\]/g,(_,x)=>put(x,true)).replace(/\\\\\(([\\s\\S]*?)\\\\\)/g,(_,x)=>put(x,false));let raw=marked.parse(src,{gfm:true,breaks:true});raw=DOMPurify.sanitize(raw,{USE_PROFILES:{html:true}});for(const item of math){raw=raw.split(item.t).join(item.display?'\\['+item.latex+'\\]':'\\('+item.latex+'\\)')}return raw}
+document.getElementById('out').innerHTML=cases.map(render).map(x=>'<section>'+x+'</section>').join('');
+MathJax.startup.promise.then(()=>MathJax.typesetPromise([document.getElementById('out')])).then(()=>document.title='PASS').catch(e=>{document.title='FAIL:'+e.message;document.body.dataset.error=e.message});
+</script></body></html>

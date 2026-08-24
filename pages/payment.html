@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <link rel="icon" href="../assets/images/novexa-tab-logo.png?v=43.41" type="image/png"><link rel="apple-touch-icon" href="../assets/images/novexa-tab-logo.png?v=43.41">
+  <script src="../js/theme-boot.js"></script><script src="../js/runtime-config.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#6d4cff">
+  <title>Novexa Pro — Study smarter</title>
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/payment.css">
+  <script src="../vendor/lucide.min.js"></script>
+</head>
+<body class="payment-page">
+  <div id="site-navbar"></div>
+  <main class="payment-shell">
+    <section class="payment-hero">
+      <span class="payment-eyebrow">NOVEXA PRO</span>
+      <h1>Know exactly what to revise next.</h1>
+      <p>Upgrade to Novexa's personal AI exam-prep system with deeper feedback, adaptive planning, past-paper intelligence and priority AI access.</p>
+      
+      <div id="paymentMessage" class="payment-message" hidden></div>
+    </section>
+
+    <section class="plans-grid" aria-label="Novexa plans">
+      <article class="plan-card">
+        <div class="plan-top"><span class="plan-badge">FREE FOREVER</span><h2>Basic</h2><p>A useful study space for building a consistent study habit.</p></div>
+        <div class="price"><strong>$0</strong><span>/ month</span></div>
+        <ul>
+          <li>✓ Full IGCSE, IAS and IAL past-paper library</li>
+          <li>✓ Personal notes and basic dashboard</li>
+          <li>✓ 5 AI usage units / day</li>
+          <li>✓ Limited uploads · up to 2 attachments · 10 MB files</li>
+          <li>✓ Basic quizzes, flashcards and study tools</li>
+          <li>✓ Study streak, XP and notifications</li>
+        </ul>
+        <div class="plan-actions"><button class="plan-button secondary" type="button" disabled>Current plan</button></div>
+      </article>
+
+      <article class="plan-card featured">
+        <span class="popular">MOST POPULAR</span>
+        <div class="plan-top"><span class="plan-badge purple">PERSONAL EXAM COACH</span><h2>Pro</h2><p>Everything in Basic plus the full Novexa AI study toolkit and priority AI capacity.</p></div>
+        <div class="price"><strong>$4.99</strong><span>/ month</span></div>
+        <ul>
+          <li>✓ Everything in Basic</li>
+          <li>✓ 50 AI usage units / day</li>
+          <li>✓ Priority AI queue and higher AI fair-use limits</li>
+          <li>✓ Up to 10 attachments · 50 MB files</li>
+          <li>✓ AI past-paper analysis and Mark My Answer</li>
+          <li>✓ AI notes, quizzes and active-recall flashcards</li>
+          <li>✓ Weakness analysis and adaptive study planner</li>
+          <li>✓ Advanced analytics, recommendations and Exam Mode</li>
+          <li>✓ Advanced AI Pet varieties and progression</li>
+        </ul>
+        <div class="plan-actions"><button id="monthlyCheckout" class="plan-button primary" type="button">Continue with Pro</button></div>
+      </article>
+
+      <article class="plan-card annual-card">
+        <span class="annual-ribbon">BEST VALUE</span>
+        <div class="plan-top"><span class="plan-badge purple">YEARLY ACCESS</span><h2>Pro Annual</h2><p>The same Pro feature set with one annual billing cycle at the lower effective monthly price.</p></div>
+        <div class="price"><strong>$39.99</strong><span>/ year</span></div>
+        <ul>
+          <li>✓ Everything in Novexa Pro</li>
+          <li>✓ 50 AI usage units / day</li>
+          <li>✓ Priority AI queue and higher AI fair-use limits</li>
+          <li>✓ Advanced past-paper, marking and weakness tools</li>
+          <li>✓ AI notes, quizzes, flashcards and adaptive planner</li>
+          <li>✓ Advanced analytics, Exam Mode and AI Pet varieties</li>
+          <li>✓ One annual billing cycle at $39.99 / year</li>
+        </ul>
+        <div class="plan-actions"><button id="annualCheckout" class="plan-button primary" type="button">Continue annually</button></div>
+      </article>
+    </section>
+
+    <section class="feature-comparison">
+      <span class="plan-badge purple">WHAT YOU GET WITH PRO</span>
+      <h2>Basic is useful. Pro is personal.</h2>
+      <div class="comparison-table" role="table" aria-label="Basic and Pro comparison">
+        <div class="comparison-row comparison-head"><span>Feature</span><b>Basic</b><b>Pro</b><b>Result</b></div>
+        <div class="comparison-row"><span>Past papers / IGCSE / IAS / IAL library</span><b>✓</b><b>✓</b><b>Same free library</b></div>
+        <div class="comparison-row"><span>AI usage units</span><b>5 / day</b><b>50 / day</b><b>10× daily allowance</b></div>
+        <div class="comparison-row"><span>AI processing</span><b>Standard</b><b>Priority</b><b>Pro requests are processed first</b></div>
+        <div class="comparison-row"><span>Uploads</span><b>2 · 10 MB</b><b>10 · 50 MB</b><b>Larger study files</b></div>
+        <div class="comparison-row"><span>AI explanations / quizzes / flashcards</span><b>Basic</b><b>Advanced</b><b>More capable study workflows</b></div>
+        <div class="comparison-row"><span>Past-paper analysis / Mark My Answer</span><b>✕</b><b>✓</b><b>Exam-focused feedback</b></div>
+        <div class="comparison-row"><span>Weakness analysis / adaptive planner</span><b>✕</b><b>✓</b><b>Personal revision plan</b></div>
+        <div class="comparison-row"><span>Advanced analytics / recommendations / Exam Mode</span><b>✕</b><b>✓</b><b>Know what to practise next</b></div>
+        <div class="comparison-row"><span>AI Pet varieties / Pro progression</span><b>Starter pets</b><b>✓</b><b>More variety and progression</b></div>
+      </div>
+      <p class="payment-note"><strong>Past papers remain free.</strong><span>PayPal securely handles Pro subscription approval and recurring billing.</span></p>
+    </section>
+  </main>
+
+
+  <div id="termsModal" class="terms-modal" hidden aria-hidden="true">
+    <div class="terms-modal-backdrop" data-terms-close></div>
+    <section class="terms-dialog terms-dialog-long" role="dialog" aria-modal="true" aria-labelledby="termsDialogTitle">
+      <button class="terms-close" type="button" aria-label="Close terms and agreement" data-terms-close>&times;</button>
+
+      <div class="terms-dialog-header">
+        <span class="terms-eyebrow">BEFORE YOU CONTINUE TO PAYPAL</span>
+        <h2 id="termsDialogTitle">Terms &amp; Agreement</h2>
+        <p class="terms-intro">Please read the following subscription terms carefully. By selecting the checkbox at the bottom and clicking <strong>Proceed</strong>, you confirm that you understand and agree to the terms applicable to the Novexa Pro or Pro Annual subscription you selected.</p>
+      </div>
+
+      <div class="terms-scroll-content">
+        <section class="terms-section terms-important">
+          <h3>1. Payment &amp; Refund Policy</h3>
+          <p><strong>No refund after payment.</strong> Once a subscription payment has been successfully completed, the payment is non-refundable.</p>
+          <p>Before clicking Proceed, make sure that you have selected the correct plan and billing cycle. Monthly and annual subscriptions have different billing periods and prices as shown on the Novexa pricing page.</p>
+          <p>Clicking Proceed does not itself complete the payment. You will be redirected to PayPal, where you can review the subscription details and complete the approval process.</p>
+        </section>
+
+        <section class="terms-section">
+          <h3>2. Subscription Plans</h3>
+          <p>Novexa offers subscription plans that may include increased daily AI usage, priority AI processing, additional file capacity, advanced study tools, past-paper analysis, marking assistance, adaptive planning, analytics and other Pro features.</p>
+          <p>The exact features, price and billing interval shown on the checkout page at the time you subscribe are the terms that apply to that purchase.</p>
+          <ul>
+            <li><strong>Pro Monthly:</strong> billed according to the monthly price shown on the pricing page.</li>
+            <li><strong>Pro Annual:</strong> billed according to the annual price shown on the pricing page for one annual billing cycle.</li>
+            <li>Your access level may change if a subscription expires, is cancelled, or is otherwise no longer active.</li>
+          </ul>
+        </section>
+
+        <section class="terms-section">
+          <h3>3. PayPal Billing &amp; Authorization</h3>
+          <p>Novexa uses PayPal to process Pro subscription payments. When you continue, you will be taken to PayPal's secure approval page to review and authorize the selected subscription.</p>
+          <p>PayPal may store and process the payment method and billing information required to administer recurring subscription payments. Novexa does not display your full payment credentials on this checkout page.</p>
+          <p>Your PayPal approval and the final subscription status are subject to successful processing by PayPal and the Novexa billing system.</p>
+        </section>
+
+        <section class="terms-section">
+          <h3>4. Recurring Billing</h3>
+          <p>Where the selected plan is a recurring subscription, the subscription may renew according to the billing interval presented to you by PayPal during approval.</p>
+          <p>You are responsible for reviewing the renewal information presented by PayPal before confirming your subscription.</p>
+        </section>
+
+        <section class="terms-section">
+          <h3>5. Cancellation</h3>
+          <p>Cancellation and subscription-management options are handled through the available Novexa account controls and/or PayPal, depending on the subscription state.</p>
+          <p>Cancellation does not automatically create a refund for a payment that has already been completed. The no-refund policy above applies unless Novexa explicitly states otherwise in writing.</p>
+        </section>
+
+        <section class="terms-section">
+          <h3>6. Pro Features &amp; Fair Use</h3>
+          <p>Pro features are provided for educational use within reasonable usage limits. Daily AI usage units, file limits, processing priority and other service limits may apply as described on the pricing page.</p>
+          <p>Priority access does not guarantee uninterrupted availability, a particular response time, or unlimited AI usage.</p>
+        </section>
+
+        <section class="terms-section">
+          <h3>7. AI-Generated Content</h3>
+          <p>Novexa AI features are educational assistance tools. AI-generated answers, explanations, summaries, flashcards and analyses may contain mistakes or omissions.</p>
+          <p>You remain responsible for checking important information against your course materials, teachers, official exam-board resources and other appropriate sources.</p>
+        </section>
+
+        <section class="terms-section">
+          <h3>8. Account Responsibility</h3>
+          <p>You are responsible for maintaining access to your Novexa account and for activity performed through that account. Do not share credentials or use the service in a way that compromises another user's account or the integrity of the service.</p>
+        </section>
+
+        <section class="terms-section">
+          <h3>9. Acceptable Use</h3>
+          <p>You agree not to misuse, disrupt, reverse engineer, scrape, attack, overload or attempt to gain unauthorized access to Novexa, its accounts, APIs, payment systems or connected services.</p>
+          <p>Novexa may restrict access where necessary to protect users, the service or connected infrastructure.</p>
+        </section>
+
+        <section class="terms-section">
+          <h3>10. Educational Content</h3>
+          <p>Past papers, notes, uploaded files and other educational content may be subject to the rights of third-party owners. You should only upload or use material that you are permitted to use.</p>
+        </section>
+
+        <section class="terms-section">
+          <h3>11. Service Availability</h3>
+          <p>Novexa may need to perform maintenance, updates or service changes. Features, limits and availability may change over time.</p>
+          <p>Pro access does not guarantee uninterrupted service or permanent availability of every current feature.</p>
+        </section>
+
+        <section class="terms-section">
+          <h3>12. Agreement to the Purchase Terms</h3>
+          <p>By checking the agreement box, you confirm that you have reviewed the plan information, understand that the selected subscription will be processed through PayPal, and understand the <strong>no-refund-after-payment</strong> policy stated above.</p>
+          <p>Please only proceed when you are ready to authorize the selected subscription.</p>
+        </section>
+
+        <section class="terms-section terms-final-note">
+          <h3>Important</h3>
+          <p>This checkout agreement is presented for your purchase confirmation. The full Novexa Terms of Service remains available on the website for broader service terms.</p>
+          <a href="terms.html" target="_blank" rel="noopener">Read the full Novexa Terms of Service</a>
+        </section>
+      </div>
+
+      <div class="terms-agreement-footer">
+        <label class="terms-check">
+          <input id="termsAgreement" type="checkbox">
+          <span>I have read and understood these terms, including the <strong>no refund after payment</strong> policy, and I agree to the terms and conditions for my selected Novexa subscription.</span>
+        </label>
+
+        <div class="terms-actions">
+          <button id="termsCancel" class="terms-button secondary" type="button">Cancel</button>
+          <button id="termsProceed" class="terms-button primary" type="button" disabled>Proceed to PayPal</button>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script src="../vendor/supabase.min.js"></script>
+  <script src="../js/supabase.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/components/navbar.js"></script>
+  <script src="../js/pages/payment.js"></script>
+  <script>window.lucide?.createIcons();</script>
+</body>
+</html>

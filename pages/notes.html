@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <link rel="icon" href="../assets/images/novexa-tab-logo.png?v=43.41" type="image/png"><link rel="apple-touch-icon" href="../assets/images/novexa-tab-logo.png?v=43.41">
+  <script src="../js/theme-boot.js"></script><script src="../js/runtime-config.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Notes — Novexa</title>
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/notes.css">
+  <script src="../vendor/lucide.min.js"></script>
+</head>
+<body class="notes-page">
+  <div id="site-navbar"></div>
+
+  <main class="notes-shell">
+    <section class="notes-heading">
+      <div>
+        <span class="notes-eyebrow">MY STUDY SPACE</span>
+        <h1>Notes</h1>
+        <p>Create, upload, organise and revisit your study material.</p>
+      </div>
+      <div class="notes-heading-actions">
+        <button id="uploadNoteButton" class="notes-secondary" type="button">＋ Upload note</button>
+        <button id="createNoteButton" class="notes-primary" type="button">＋ Create note</button>
+      </div>
+    </section>
+
+    <section class="notes-toolbar card">
+      <div class="notes-tabs" role="tablist">
+        <button class="notes-tab active" data-tab="mine" type="button"><i data-lucide="layout-list" style="width:16px;height:16px;margin-right:8px;vertical-align:middle"></i>My Notes</button>
+        <button class="notes-tab" data-tab="saved" type="button"><i data-lucide="heart" style="width:16px;height:16px;margin-right:8px;vertical-align:middle"></i>Saved</button>
+      </div>
+      <div class="notes-filters">
+        <label class="notes-search"><span>⌕</span><input id="noteSearch" type="search" placeholder="Search by title, subject or tags…"></label>
+        <select id="subjectFilter"><option value="">All subjects</option></select>
+        <select id="qualificationFilter"><option value="">All qualifications</option><option>IGCSE</option><option>IAL</option><option>IAS</option><option>Other</option></select>
+        <select id="sortFilter"><option value="newest">Latest first</option><option value="oldest">Oldest first</option><option value="title">Title A–Z</option></select>
+      </div>
+    </section>
+
+    <section class="notes-layout">
+      <div class="notes-main">
+        <div class="notes-results-head"><div><strong id="notesCount">0 notes</strong><span id="notesStatus">Your private study notes</span></div><button id="refreshNotes" class="icon-button" type="button" title="Refresh">↻</button></div>
+        <div id="notesList" class="notes-list"></div>
+      </div>
+
+      <aside class="notes-sidebar">
+        <section class="notes-side-card">
+          <div class="side-card-title"><span>✦</span> Popular subjects</div>
+          <div id="popularSubjects" class="subject-pills"></div>
+        </section>
+        <section class="notes-side-card">
+          <div class="side-card-title"><span>↥</span> Recent uploads</div>
+          <div id="recentUploads" class="recent-uploads"></div>
+        </section>
+        <section class="notes-side-card notes-help-card">
+          <div class="help-icon">✦</div>
+          <strong>Keep your revision organised</strong>
+          <p>Upload PDFs, Word files, images or create notes directly in Novexa. Your notes are tied to your account, so they remain available after you sign out.</p>
+          <button id="helpAiButton" type="button">Ask Novexa AI →</button>
+        </section>
+      </aside>
+    </section>
+  </main>
+
+  <div id="noteModal" class="note-modal" hidden>
+    <div class="note-modal-backdrop" data-close-note></div>
+    <section class="note-modal-card" role="dialog" aria-modal="true" aria-labelledby="noteModalTitle">
+      <button class="note-modal-close" type="button" data-close-note>×</button>
+      <span class="notes-eyebrow">STUDY NOTE</span>
+      <h2 id="noteModalTitle">Create a note</h2>
+      <p class="note-modal-subtitle">Write a revision note or upload a file. You can do both.</p>
+      <form id="noteForm">
+        <input type="hidden" id="noteId">
+        <div class="form-grid-two">
+          <label>Title<input id="noteTitle" required maxlength="140" placeholder="e.g. Quadratic equations — full revision"></label>
+          <label>Subject<input id="noteSubject" list="subjectOptions" maxlength="80" placeholder="e.g. Mathematics"><datalist id="subjectOptions"><option>Mathematics</option><option>Physics</option><option>Chemistry</option><option>Biology</option><option>Accounting</option><option>Economics</option><option>Business</option><option>Computer Science</option><option>English</option></datalist></label>
+        </div>
+        <div class="form-grid-two">
+          <label>Qualification<select id="noteQualification"><option value="Other">Other</option><option>IGCSE</option><option>IAL</option><option>IAS</option></select></label>
+          <label>Tags <span class="optional">(comma separated)</span><input id="noteTags" maxlength="180" placeholder="algebra, equations, revision"></label>
+        </div>
+        <label>Note content<textarea id="noteBody" rows="9" maxlength="30000" placeholder="Write your notes here…"></textarea></label>
+        <label class="file-drop" for="noteFile"><span class="file-drop-icon">＋</span><span><strong id="fileLabel">Attach a PDF, Word file, image or text file</strong><small>Maximum 20 MB</small></span><input id="noteFile" type="file" accept=".pdf,.doc,.docx,.txt,.md,.csv,.png,.jpg,.jpeg,.webp"></label>
+        <div id="selectedFile" class="selected-file" hidden></div>
+        <div id="noteFormError" class="form-error" role="alert"></div>
+        <div class="note-form-actions"><button id="deleteNoteButton" type="button" class="notes-danger" hidden>Delete</button><span class="note-form-spacer"></span><button type="button" class="notes-secondary" data-close-note>Cancel</button><button id="saveNoteButton" class="notes-primary" type="submit">Save note</button></div>
+      </form>
+    </section>
+  </div>
+
+  <script src="../vendor/supabase.min.js"></script>
+  <script src="../js/supabase.js"></script>
+  <script src="../js/auth.js"></script>
+  <script>window.NovexaAuth.requireAuth({ returnTo: window.location.href });</script>
+  <script src="../js/components/navbar.js"></script>
+  <script src="../js/pages/notes.js"></script>
+</body>
+</html>

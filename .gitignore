@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+
+# Environment variables / secrets
+.env
+.env.*
+!.env.example
+
+# Backend / server code
+backend/
+server/
+api/
+
+# Cloud / local secrets
+secrets/
+credentials/
+
+# Private keys
+*.key
+*.pem
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Local development
+.vscode/

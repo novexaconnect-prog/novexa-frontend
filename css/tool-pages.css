@@ -1,0 +1,23 @@
+.tool-page{min-height:100vh;background:#f7f7fc;color:#1b1d3d}.tool-shell{max-width:1200px;margin:0 auto;padding:38px 24px}.tool-hero{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:22px}.tool-hero h1{font-size:34px;margin:10px 0 6px;letter-spacing:-.035em}.tool-hero p{color:#747994;line-height:1.6;margin:0}.tool-eyebrow{font-size:11px;font-weight:800;letter-spacing:.09em;color:#6c47f4}.tool-card{background:#fff;border:1px solid #e9e7f0;border-radius:18px;box-shadow:0 12px 35px rgba(40,32,90,.05);padding:20px;margin-bottom:16px}.tool-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.tool-stat strong{display:block;font-size:27px}.tool-stat span{color:#7b8099;font-size:12px}.tool-list{display:grid;gap:8px}.tool-row{display:flex;align-items:center;justify-content:space-between;gap:12px;border:1px solid #eeeaf4;border-radius:12px;padding:13px}.tool-row button,.tool-primary{border:0;background:#6b46f5;color:#fff;padding:9px 13px;border-radius:9px;font-weight:800;cursor:pointer}.tool-secondary{border:1px solid #ddd8eb;background:#fff;color:#4b4f6b;padding:9px 13px;border-radius:9px;font-weight:700;cursor:pointer}.tool-input{width:100%;border:1px solid #dedbea;border-radius:11px;padding:12px;outline:none}.tool-input:focus{border-color:#9b7dff;box-shadow:0 0 0 3px rgba(107,70,245,.08)}.tool-form{display:grid;gap:12px}.tool-progress{height:8px;background:#eeeaf5;border-radius:99px;overflow:hidden}.tool-progress i{display:block;height:100%;background:linear-gradient(90deg,#6b46f5,#986bff)}.tool-note{font-size:12px;color:#7c819a;line-height:1.6}.tool-success{padding:10px 12px;border-radius:10px;background:#ecfaf3;color:#26805a;font-size:12px}.tool-danger{background:#fff1f1;color:#c94b4b;border:0;padding:10px 13px;border-radius:9px;font-weight:800;cursor:pointer}@media(max-width:800px){.tool-grid{grid-template-columns:1fr}.tool-hero{align-items:flex-start;flex-direction:column}}
+
+.settings-pro-meter{height:9px;margin-top:12px;border-radius:999px;background:#eeeaf7;overflow:hidden}.settings-pro-meter span{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,#6843f5,#a06cff);transition:width .45s cubic-bezier(.23,1,.32,1)}.settings-plan-reset{display:block;margin-top:7px;color:#9699ad;font-size:10px}.settings-pro-active .settings-panel-head{border-bottom-color:#d9ccff}.settings-pro-active .settings-panel-head h2{color:#6843f5}
+
+.help-page .feedback-card{display:grid;grid-template-columns:58px 1fr;gap:16px;align-items:start;background:linear-gradient(135deg,#fbf9ff,#fff);border-color:#ddd3ff}.feedback-icon{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;background:#eee8ff;color:#6843f5}.feedback-card h2{margin:7px 0 6px}.feedback-button{display:inline-flex;align-items:center;gap:7px;text-decoration:none;margin-top:10px}.support-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.tool-link-button{display:inline-flex;align-items:center;gap:7px;color:#6843f5;font-size:12px;font-weight:850;text-decoration:none}.tool-link-button:hover{text-decoration:underline}@media(max-width:560px){.help-page .feedback-card{grid-template-columns:1fr}.feedback-icon{width:44px;height:44px}}
+
+/* Authenticated tool pages: keep the same Novexa dark shell after login. */
+:root[data-theme="dark"] .tool-page,
+:root[data-theme="dark"] .tool-shell,
+:root[data-theme="dark"] .tool-card,
+:root[data-theme="dark"] .tool-row,
+:root[data-theme="dark"] .tool-table,
+:root[data-theme="dark"] .tool-note,
+:root[data-theme="dark"] .tool-empty,
+:root[data-theme="dark"] .tool-modal { background:#101321 !important; color:#f7f5ff; border-color:rgba(255,255,255,.11) !important; }
+:root[data-theme="dark"] .tool-page p,
+:root[data-theme="dark"] .tool-page small,
+:root[data-theme="dark"] .tool-page .muted,
+:root[data-theme="dark"] .tool-note { color:#aeb2c9; }
+:root[data-theme="dark"] .tool-page input,
+:root[data-theme="dark"] .tool-page textarea,
+:root[data-theme="dark"] .tool-page select,
+:root[data-theme="dark"] .tool-page button:not(.tool-primary) { background:#0b0e1b; color:#f7f5ff; border-color:rgba(255,255,255,.14); }

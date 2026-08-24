@@ -1,0 +1,9 @@
+{
+  "engine": "MathJax",
+  "version": "3.2.2",
+  "bundle": "mathjax-tex-svg-3.2.2.js",
+  "input": "TeX/LaTeX",
+  "output": "SVG",
+  "source": "local project vendor",
+  "policy": "Local MathJax bundle; one MathJax instance per page; unified TeX normalization layer"
+}

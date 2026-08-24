@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <link rel="icon" href="../assets/images/novexa-tab-logo.png?v=43.45" type="image/png"><link rel="apple-touch-icon" href="../assets/images/novexa-tab-logo.png?v=43.45">
+  <script src="../js/theme-boot.js"></script><script src="../js/runtime-config.js"></script>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#6d4cff">
+  <script>
+    (() => {
+      const params = new URLSearchParams(window.location.search);
+      const isPaperLaunch = params.has('paper') || params.has('file') || params.has('paperUrl') || params.get('from') === 'paper';
+      if (!isPaperLaunch) return;
+      const viewerParams = new URLSearchParams(params);
+      viewerParams.set('embedded', '1');
+      viewerParams.set('title', viewerParams.get('title') || viewerParams.get('paper') || 'Past paper');
+      viewerParams.set('type', viewerParams.get('type') || 'Paper');
+      window.location.replace(`paper.html?${viewerParams.toString()}`);
+    })();
+  </script>
+  <title>Novexa AI — Study Assistant</title>
+  <link rel="stylesheet" href="../css/global.css"><link rel="stylesheet" href="../css/components.css"><link rel="stylesheet" href="../css/novexa-ai.css">
+  <script src="../vendor/lucide.min.js"></script>
+  <script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"],["$$","$$"]],processEscapes:true,processEnvironments:true,packages:{"[+]": ["ams"]}},options:{skipHtmlTags:["script","noscript","style","textarea","pre","code"],ignoreHtmlClass:"tex2jax_ignore",processHtmlClass:"mathjax_process"},svg:{fontCache:"global"},startup:{typeset:false}};</script>
+</head>
+	<body class="ai-app-page">
+	<div id="site-navbar"></div>
+	<main class="ai-app-shell">
+	  <!-- Announcement Banner -->
+	  <div id="aiAnnouncement" style="background: linear-gradient(90deg, #6c4bff, #8a5dff); color: white; padding: 12px 20px; border-radius: 12px; margin-bottom: 24px; display: flex; align-items: center; gap: 12px; box-shadow: 0 4px 15px rgba(108, 75, 255, 0.2);">
+		<span style="font-size: 20px;">✦</span>
+		<div>
+		  <strong style="display: block; font-size: 14px;">NEW PAPERS ADDED</strong>
+		  <span style="font-size: 12px; opacity: 0.9;">January 2026 Past Papers are now available for study with Novexa AI.</span>
+		</div>
+	  </div>
+
+	  <section class="ai-app-header">
+    <div><span class="ai-eyebrow">✦ NOVEXA AI</span><h1>Your personal study assistant</h1><p>Explain, summarize, quiz, mark answers, find weaknesses, build plans and create flashcards from your own material.</p></div>
+    <div class="ai-header-actions"><span id="aiPlanBadge" class="ai-plan-badge">Basic</span><span id="aiCredits" class="ai-credit-pill">Loading AI usage…</span><button id="newChat" class="ai-tool-btn ai-new-chat-btn" type="button"><i data-lucide="plus" style="width:16px;height:16px;vertical-align:middle;margin-right:6px"></i>New chat</button><button id="deleteChat" class="ai-tool-btn ai-danger-btn" type="button" title="Delete this chat"><i data-lucide="trash-2" style="width:16px;height:16px;vertical-align:middle;margin-right:6px"></i>Delete chat</button><button id="exportChat" class="ai-tool-btn" type="button"><i data-lucide="download" style="width:16px;height:16px;vertical-align:middle;margin-right:6px"></i>Export</button></div>
+  </section>
+  <section class="ai-workspace">
+      <div id="aiSidebarBackdrop" class="ai-sidebar-backdrop" hidden></div>
+      <aside class="ai-sidebar">
+      <div class="ai-sidebar-topbar"><div><strong>Study workspace</strong><span>Conversations & tools</span></div><button id="sidebarCollapse" class="ai-sidebar-collapse" type="button" aria-label="Collapse study sidebar"><i data-lucide="panel-left-close"></i></button></div>
+      <div class="ai-profile-card"><div class="ai-avatar" id="aiAvatar"><i data-lucide="user"></i></div><div><strong id="aiUserName">Student</strong><span id="aiUserEmail">Sign in to use Novexa AI</span></div><span class="ai-online-dot"></span></div>
+      <div class="ai-side-section"><label class="ai-side-title" for="subjectSelect">Subject</label><select id="subjectSelect" class="ai-select">
+        <option>General</option><option>Mathematics</option><option>Physics</option><option>Chemistry</option><option>Biology</option><option>Accounting</option><option>Economics</option><option>Business</option><option>Computer Science</option><option>English</option>
+      </select>      </div>
+	      <div class="ai-side-section recent-section">
+	        <button id="newChatSidebar" class="ai-primary-btn sidebar-new-chat" type="button"><i data-lucide="plus-circle" style="width:16px;height:16px;margin-right:8px;vertical-align:middle"></i>New chat</button>
+	        <div class="ai-side-title">Recent chats <span id="recentChatsPlan" class="recent-plan-label">Basic</span></div>
+	        <input id="recentChatsSearch" class="recent-chat-search" type="search" placeholder="Search chats…" aria-label="Search recent chats">
+	        <div id="recentChats" class="recent-chats"></div>
+	      </div>
+      <div class="ai-side-section"><div class="ai-side-title">AI study tools</div>
+        <div id="aiToolGrid" class="ai-tool-grid">
+          <button class="ai-quick-tool" data-ai-action="explain" data-prompt="Explain the topic I give you from first principles, then show an exam-style example." type="button"><i data-lucide="lightbulb"></i><span><b>Explain</b><small>Teach it clearly</small></span></button>
+          <button class="ai-quick-tool" data-ai-action="summarize" data-pro="true" data-prompt="Summarize the attached material into revision notes, key points, definitions/formulas and exam traps." type="button"><i data-lucide="file-text"></i><span><b>Summarize</b><small>Turn material into notes</small></span></button>
+          <button class="ai-quick-tool" data-ai-action="quiz" data-prompt="Quiz me on the supplied topic/material. Start easy and increase difficulty." type="button"><i data-lucide="target"></i><span><b>Quiz me</b><small>Test recall</small></span></button>
+          <button class="ai-quick-tool" data-ai-action="mark" data-pro="true" data-prompt="Mark the answer I provide. Use the supplied question and mark scheme if available; otherwise clearly label the rubric as an estimate." type="button"><i data-lucide="check-square"></i><span><b>Mark my answer</b><small>Exam-style feedback</small></span></button>
+          <button class="ai-quick-tool" data-ai-action="weakness" data-pro="true" data-prompt="Find recurring weaknesses in my supplied answers or study material and give me the top three priorities to fix." type="button"><i data-lucide="trending-down"></i><span><b>Find weaknesses</b><small>Spot patterns</small></span></button>
+          <button class="ai-quick-tool" data-ai-action="planner" data-pro="true" data-prompt="Build my revision schedule from the exam date and subjects I provide. Include active recall, practice papers and recovery time." type="button"><i data-lucide="calendar"></i><span><b>Study planner</b><small>Build a realistic plan</small></span></button>
+          <button class="ai-quick-tool" data-ai-action="flashcards" data-prompt="Create active-recall flashcards from the topic or material I provide. Make them concise, exam-focused, unambiguous, and varied." type="button"><i data-lucide="layers"></i><span><b>Flashcards</b><small>Generate a study deck</small></span></button>
+          <button class="ai-quick-tool" data-ai-action="paper_analysis" data-pro="true" data-prompt="Analyse this uploaded past paper. Identify topics, question types, command words, difficulty, and high-mark questions." type="button"><i data-lucide="scan-search"></i><span><b>Analyse past paper</b><small>Find what the paper tests</small></span></button>
+          <button class="ai-quick-tool" data-ai-action="notes" data-pro="true" data-prompt="Turn the uploaded material into a polished revision sheet with key concepts, definitions, formulas, examples, common mistakes, exam tips, recap, and quiz." type="button"><i data-lucide="notebook-pen"></i><span><b>Generate notes</b><small>Make a revision sheet</small></span></button>
+          <button class="ai-quick-tool" data-ai-action="recommendations" data-pro="true" data-prompt="Recommend what I should practise next from my supplied performance or weakness evidence, and explain why." type="button"><i data-lucide="sparkles"></i><span><b>Recommend practice</b><small>Choose the next paper</small></span></button>
+        </div>
+      </div>
+	      <div class="ai-sidebar-actions">
+	        <a class="ai-instagram-link" href="https://www.instagram.com/novexa_study/" target="_blank" rel="noopener noreferrer"><img src="../assets/images/instagram-novexa.png" alt="" class="ai-instagram-icon"> <span>Follow Novexa on Instagram</span></a>
+	        <button id="aiLoginBtn" class="ai-login-btn" type="button">Sign in to Novexa</button>
+	      </div>
+    </aside>
+    <section class="ai-chat-panel">
+      <div class="chat-topbar"><button id="sidebarToggle" class="ai-sidebar-toggle" type="button" aria-label="Collapse study sidebar"><i data-lucide="panel-left-close"></i></button><div class="chat-title-wrap"><div id="aiPetTopAvatar" class="chat-pet-avatar" aria-hidden="true">🦊</div><div><h2 id="aiPetTopName">Nova</h2><span id="aiStatus">Checking your session…</span></div></div><div class="chat-topbar-right"><div id="aiReminder" class="ai-reminder" aria-live="polite"></div><span id="aiChatCredits" class="ai-chat-credit-pill" title="Current AI usage units">Usage loading…</span><div class="chat-badges"><span>Student-safe</span><span>Step-by-step</span></div></div></div>
+      <div id="chatThread" class="chat-thread" aria-live="polite"><div class="ai-welcome-message"><div class="welcome-icon"><i data-lucide="brain-circuit" style="width:32px;height:32px"></i></div><h3>What would you like to learn?</h3><p>Ask a question, upload a photo, or attach a PDF/DOCX. The AI uses your supplied material first instead of inventing unseen questions.</p><div class="starter-grid">
+        <button class="starter-btn" type="button" data-prompt="Explain quadratic equations from the basics, then solve x² - 5x + 6 = 0 step by step."><i data-lucide="plus-circle" style="width:14px;height:14px;margin-right:8px;vertical-align:middle"></i>Explain a maths problem</button>
+        <button class="starter-btn" type="button" data-prompt="Explain photosynthesis simply, then give me the key points I should remember for an exam."><i data-lucide="plus-circle" style="width:14px;height:14px;margin-right:8px;vertical-align:middle"></i>Learn a science topic</button>
+        <button class="starter-btn" type="button" data-prompt="Give me a structured plan for answering a 12-mark business question."><i data-lucide="plus-circle" style="width:14px;height:14px;margin-right:8px;vertical-align:middle"></i>Improve exam technique</button>
+        <button class="starter-btn" type="button" data-prompt="Quiz me on a topic I choose. Start easy, then increase the difficulty."><i data-lucide="plus-circle" style="width:14px;height:14px;margin-right:8px;vertical-align:middle"></i>Start a quiz</button>
+      </div></div></div>
+      <div id="aiCreditExhausted" class="ai-credit-exhausted" hidden><span class="ai-credit-exhausted-icon">✦</span><div><strong>You’ve used all your AI usage units today.</strong><p>You’ve reached your daily AI usage allowance. Pro includes 50 usage units/day and priority processing; Basic resets to 5 units each day.</p></div><div class="ai-credit-exhausted-actions"><a id="aiZeroCreditUpgrade" class="ai-primary-btn" href="payment.html">Upgrade to Pro</a><button id="aiZeroCreditLater" class="ai-tool-btn" type="button">Maybe later</button></div></div>
+      <div class="composer-wrap"><div class="composer-tools"><span>Ask anything</span><span id="composerMode">Subject: General</span></div><div id="attachmentPreview" class="attachment-preview"></div>
+        <div class="composer"><div class="composer-input-wrap"><textarea id="chatInput" rows="2" placeholder="Ask anything or attach a question…"></textarea></div><div class="composer-actions">
+          <button id="attachButton" class="attach-button" type="button" title="Attach an image, PDF, Word document or text file"><i data-lucide="paperclip"></i></button>
+          <input id="fileInput" type="file" hidden multiple accept="image/*,.pdf,.docx,.txt,.md,.csv,.json,.xml,.html,.js,.ts,.css,.py,.java,.c,.cpp,.sql">
+          <button id="chatStop" class="stop-button" type="button" hidden aria-label="Stop AI response"><i data-lucide="square"></i><span>Stop</span></button>
+          <button id="chatSubmit" class="send-button" type="button"><i data-lucide="send"></i></button>
+        </div></div>
+        <div class="composer-foot"><span>Images, PDF, DOCX, TXT, MD, CSV and code files · Basic: 2 attachments / 10 MB · Pro: 10 attachments / 50 MB</span><span>Enter to send · Shift+Enter for a new line</span></div>
+      </div>
+    </section>
+  </section>
+</main>
+<script src="../vendor/supabase.min.js"></script>
+<script src="../vendor/pdf.min.js"></script>
+<script src="../vendor/mammoth.browser.min.js"></script>
+<script src="../vendor/marked.min.js"></script>
+<script src="../vendor/purify.min.js"></script>
+<script src="../vendor/mathjax-tex-svg-3.2.2.js?v=43.71"></script>
+<script src="../js/supabase.js"></script><script src="../js/auth.js"></script><script>window.NovexaAuth.requireAuth({ returnTo: window.location.href });</script><script src="../js/components/navbar.js" defer></script><script src="../js/utils/math-format.js?v=43.71"></script><script src="../js/novexa-ai.js?v=43.71" defer></script>
+<script>lucide.createIcons();</script>
+</body></html>

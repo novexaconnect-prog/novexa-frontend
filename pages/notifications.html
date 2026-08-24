@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <link rel="icon" href="../assets/images/novexa-tab-logo.png?v=43.41" type="image/png"><link rel="apple-touch-icon" href="../assets/images/novexa-tab-logo.png?v=43.41">
+  <script src="../js/theme-boot.js"></script><script src="../js/runtime-config.js"></script>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Notifications — Novexa</title>
+  <link rel="stylesheet" href="../css/global.css"><link rel="stylesheet" href="../css/components.css"><link rel="stylesheet" href="../css/tool-pages.css">
+  <script src="../vendor/lucide.min.js"></script>
+  <style>
+    :root{--ink:#292c4b;--muted:#777c98;--line:#e7e3f1;--purple:#6843f5}
+    .notification-page{min-height:100vh;background:radial-gradient(circle at 86% 0%,rgba(135,104,255,.16),transparent 28%),linear-gradient(180deg,#fbfaff,#f6f7fc)}.notification-shell{max-width:920px;margin:auto;padding:34px 24px 70px}.notification-hero{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;margin:16px 0 25px}.notification-kicker{display:inline-flex;align-items:center;gap:7px;color:var(--purple);font-size:11px;font-weight:900;letter-spacing:.14em}.notification-hero h1{margin:11px 0 8px;color:var(--ink);font-size:clamp(31px,4vw,46px);letter-spacing:-.055em;line-height:1}.notification-hero p{margin:0;color:var(--muted);line-height:1.6}.notification-mark{display:inline-flex;align-items:center;gap:8px;padding:10px 13px;background:#fff;border:1px solid var(--line);border-radius:11px;color:#645b83;font-size:11px;font-weight:850;cursor:pointer;transition:transform .18s ease,box-shadow .18s ease}.notification-mark:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(46,35,110,.08)}.notification-count{margin:0 0 12px;color:#8e92a8;font-size:11px;font-weight:800}.notification-list{display:grid;gap:11px}.notification-card{display:grid;grid-template-columns:42px 1fr auto;gap:13px;align-items:flex-start;padding:17px 18px;background:rgba(255,255,255,.9);border:1px solid var(--line);border-radius:17px;box-shadow:0 13px 35px rgba(55,38,130,.06);transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;animation:notifyRise .45s cubic-bezier(.23,1,.32,1) both}.notification-card:hover{transform:translateY(-2px);box-shadow:0 20px 45px rgba(55,38,130,.11);border-color:#d7ccfa}.notification-card.unread{border-left:3px solid var(--purple);background:#fff}.notification-card.featured{background:linear-gradient(135deg,#f0ebff,#fff);border-color:#d9cffc}.notification-icon{display:grid;place-items:center;width:42px;height:42px;border-radius:13px;background:#f0ebff;color:var(--purple)}.notification-icon.credits{background:#fff6dd;color:#d89a2d}.notification-icon.streak{background:#fff1dd;color:#e6872c}.notification-icon.content{background:#eaf8f5;color:#278b76}.notification-copy h2{margin:1px 0 6px;color:#404461;font-size:14px;letter-spacing:-.01em}.notification-copy p{margin:0;color:#7d819b;line-height:1.6;font-size:12px;white-space:pre-line}.notification-time{color:#a5a8b8;font-size:10px;white-space:nowrap}.notification-progress{height:6px;background:#ece8f6;border-radius:99px;overflow:hidden;margin-top:10px}.notification-progress span{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,#6843f5,#a37bff)}.notification-action{display:inline-flex;align-items:center;gap:6px;margin-top:10px;color:#6843f5;font-size:10px;font-weight:900;text-decoration:none}.notification-action:hover{text-decoration:underline}.notification-empty{padding:60px 24px;text-align:center;background:#fff;border:1px dashed #dad3eb;border-radius:19px;color:var(--muted)}.notification-empty i{color:var(--purple);margin-bottom:10px}.notification-empty h2{font-size:18px;color:var(--ink);margin:0 0 7px}.notification-empty p{font-size:12px;margin:0}.notification-help{margin-top:15px;padding:13px 15px;border-radius:13px;background:#faf9ff;color:#9295aa;font-size:11px;line-height:1.55}@keyframes notifyRise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}@media(max-width:620px){.notification-shell{padding:22px 15px 50px}.notification-hero{display:block}.notification-mark{margin-top:17px}.notification-card{grid-template-columns:36px 1fr;gap:10px;padding:14px}.notification-icon{width:36px;height:36px}.notification-time{grid-column:2}.notification-copy h2{font-size:13px}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  
+    :root[data-theme="dark"] .notification-page{background:radial-gradient(circle at 86% 0%,rgba(123,82,255,.16),transparent 28%),#080a12;color:#f5f3ff}
+    :root[data-theme="dark"] .notification-mark,:root[data-theme="dark"] .notification-card,:root[data-theme="dark"] .notification-empty{background:#121522;border-color:rgba(255,255,255,.1);color:#f5f3ff}
+    :root[data-theme="dark"] .notification-card.featured{background:linear-gradient(135deg,#1b1730,#121522);border-color:rgba(169,140,255,.2)}
+    :root[data-theme="dark"] .notification-copy h2,:root[data-theme="dark"] .notification-empty h2{color:#f5f3ff}
+    :root[data-theme="dark"] .notification-copy p,:root[data-theme="dark"] .notification-time,:root[data-theme="dark"] .notification-count{color:#a5abc1}
+    :root[data-theme="dark"] .notification-help{background:#141724;color:#a5abc1}
+</style>
+</head>
+<body class="tool-page notification-page">
+  <div id="site-navbar"></div>
+  <main class="notification-shell">
+    <section class="notification-hero"><div><span class="notification-kicker"><i data-lucide="bell-ring" width="14"></i> NOVEXA UPDATES</span><h1>Stay in the loop.</h1><p>Your credits, streaks, notes, and past-paper updates in one calm place.</p></div><button id="mark-all" class="notification-mark" type="button"><i data-lucide="check-check" width="14"></i> Mark all as read</button></section>
+    <p id="notification-count" class="notification-count">Loading your updates…</p>
+    <section id="notification-list" class="notification-list"><div class="notification-empty"><i data-lucide="loader-circle" width="22"></i><p>Loading notifications…</p></div></section>
+    <p class="notification-help">Notification history is kept lightweight and private. Read states are stored on this device, while your credit, note, and study data stay in your Novexa account.</p>
+  </main>
+  <script src="../vendor/supabase.min.js"></script><script src="../js/supabase.js"></script><script src="../js/notifications.js"></script><script src="../js/components/navbar.js"></script>
+  <script>
+  (async()=>{
+    const supabase=window.supabaseClient, listEl=document.getElementById('notification-list'), countEl=document.getElementById('notification-count');
+    const auth=await supabase.auth.getUser(); const user=auth.data?.user; if(!user){location.replace('login.html');return;}
+    let notifications=await window.NovexaNotifications.getForUser(user);
+    const iconClass=item=>item.type==='credits'?'credits':item.type==='streak'?'streak':item.type==='content'?'content':'';
+    const render=()=>{
+      const unread=notifications.filter(item=>item.unread).length; countEl.textContent=unread?`${unread} unread update${unread===1?'':'s'}`:'You are all caught up';
+      listEl.innerHTML=notifications.length?notifications.map((item,i)=>`<article class="notification-card ${item.unread?'unread':''} ${item.featured?'featured':''}" style="animation-delay:${Math.min(i,8)*45}ms" data-id="${window.NovexaNotifications.esc(item.id)}"><div class="notification-icon ${iconClass(item)}"><i data-lucide="${window.NovexaNotifications.esc(item.icon||'bell')}" width="18"></i></div><div class="notification-copy"><h2>${window.NovexaNotifications.esc(item.title)}</h2><p>${window.NovexaNotifications.esc(item.body)}</p>${item.progress!=null?`<div class="notification-progress"><span style="width:${Math.min(100,Number(item.progress))}%"></span></div>`:''}${item.href?`<a class="notification-action" href="${window.NovexaNotifications.esc(item.href)}" data-open="${window.NovexaNotifications.esc(item.id)}">Open in Novexa <i data-lucide="arrow-up-right" width="13"></i></a>`:''}</div><time class="notification-time">${window.NovexaNotifications.esc(item.age||'')}</time></article>`).join(''):'<div class="notification-empty"><i data-lucide="check-circle-2" width="26"></i><h2>Nothing new right now.</h2><p>When your credits, streak, notes, or paper archive change, updates will appear here.</p></div>';
+      lucide.createIcons();
+      listEl.querySelectorAll('.notification-card').forEach(card=>card.addEventListener('click',event=>{const id=card.dataset.id;window.NovexaNotifications.markRead(user.id,[id]);const item=notifications.find(x=>x.id===id);if(item?.paperAt)window.NovexaNotifications.acknowledgePaperUpdate(user.id,item.paperAt);notifications=notifications.map(x=>x.id===id?{...x,unread:false}:x);render();if(event.target.closest('a'))return;if(item?.href)location.href=item.href;}));
+    };
+    document.getElementById('mark-all').onclick=()=>{window.NovexaNotifications.markAllRead(user.id,notifications);notifications=notifications.map(item=>({...item,unread:false}));render();};
+    render();
+  })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Novexa Math Render Smoke Test</title>
+<script src="./js/utils/math-format.js?v=43.51"></script>
+<style>body{font-family:Inter,system-ui;background:#0b0d16;color:#f5f3ff;padding:28px;line-height:1.7}.case{margin:0 0 28px}.label{font-weight:800}</style></head>
+<body>
+<div class="case"><div class="label">✦ Step 1 — Find the strip width</div><pre id="s1"></pre></div>
+<div class="case"><div class="label">✦ Step 2 — Build the table of values</div><pre id="s2"></pre></div>
+<div class="case"><div class="label">✦ Step 3 — Substitute into the formula</div><pre id="s3"></pre></div>
+<script>
+const m=window.NovexaMath;
+s1.textContent=m.prepareMarkdown('### Step 1 — Find the strip width\\n\\nh = (3 - 1)/4 = (2)/4 = 0.5');
+s2.textContent=m.prepareMarkdown('| Index (i) | x_i | y_i = x_i² | Category |\\n|---|---|---|---|\\n| 0 | 1.0 | 1.0² = 1.00 | First |');
+s3.textContent=m.prepareMarkdown('Area of sector: Area = (1/2) r² θ\\n\\nA = (0.5/2)[(1.00 + 9.00) + 2(2.25 + 4.00 + 6.25)]');
+</script></body></html>

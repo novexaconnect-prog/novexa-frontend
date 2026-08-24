@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <link rel="icon" href="../assets/images/novexa-tab-logo.png?v=43.41" type="image/png"><link rel="apple-touch-icon" href="../assets/images/novexa-tab-logo.png?v=43.41">
+  <script src="../js/theme-boot.js"></script><script src="../js/runtime-config.js"></script>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Exam Mode — Novexa</title>
+  <link rel="stylesheet" href="../css/global.css"><link rel="stylesheet" href="../css/components.css"><link rel="stylesheet" href="../css/tool-pages.css">
+  <style>
+    :root{--exam-bg:#f7f7fc;--exam-card:#fff;--exam-text:#20233e;--exam-muted:#69708f;--exam-border:#e5e2ef;--exam-soft:#faf9ff;--exam-input:#fff;--exam-purple:#6843f5;--exam-purple-soft:#f0ebff;--exam-danger:#b83f57;--exam-shadow:0 18px 50px rgba(40,32,90,.07)}
+    :root[data-theme="dark"]{--exam-bg:#070812;--exam-card:#101321;--exam-text:#f7f5ff;--exam-muted:#a8abc2;--exam-border:rgba(255,255,255,.11);--exam-soft:#151827;--exam-input:#0b0d18;--exam-purple:#a98cff;--exam-purple-soft:rgba(124,77,255,.18);--exam-danger:#ff9aa9;--exam-shadow:0 22px 60px rgba(0,0,0,.28)}
+    body.tool-page{background:var(--exam-bg)!important;color:var(--exam-text)!important}
+    .exam-layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:16px}.exam-card{background:var(--exam-card);color:var(--exam-text);border:1px solid var(--exam-border);border-radius:20px;padding:22px;box-shadow:var(--exam-shadow)}.exam-form{display:grid;gap:12px}.exam-form label{display:grid;gap:7px;color:var(--exam-muted);font-size:11px;font-weight:850}.exam-form input,.exam-form textarea,.exam-form select{width:100%;border:1px solid var(--exam-border);border-radius:11px;padding:12px 13px;color:var(--exam-text);background:var(--exam-input);outline:0}.exam-form textarea{min-height:130px;resize:vertical;line-height:1.65}.exam-form input:focus,.exam-form textarea:focus,.exam-form select:focus{border-color:var(--exam-purple);box-shadow:0 0 0 3px rgba(104,67,245,.13)}.exam-controls{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.exam-timer{font-size:42px;font-weight:950;letter-spacing:-.07em;color:var(--exam-purple)}.exam-timer.warning{color:#d66a25}.exam-timer.expired{color:var(--exam-danger)}.exam-state{padding:8px 10px;border-radius:999px;background:var(--exam-purple-soft);color:var(--exam-purple);font-size:10px;font-weight:900}.exam-question,.exam-answer{white-space:pre-wrap;line-height:1.7;color:var(--exam-text)}.exam-question{padding:16px;border-radius:14px;background:var(--exam-soft);border:1px solid var(--exam-border);margin-bottom:16px}.exam-running .exam-setup,.exam-running .exam-rules{display:none}.exam-work{display:none}.exam-running .exam-work,.exam-completed .exam-work{display:block}.exam-completed .exam-setup{display:none}.exam-lock{background:linear-gradient(145deg,#271552,#6843f5);color:#fff;border-color:rgba(255,255,255,.35)}.exam-lock p{color:rgba(255,255,255,.82)}.exam-lock .tool-primary{background:#fff;color:#6843f5}.exam-rules{color:var(--exam-text)}.exam-rules p,.exam-rules li{color:var(--exam-muted);line-height:1.65}.mark-result{margin-top:16px;padding:17px;border:1px solid var(--exam-border);border-radius:14px;background:var(--exam-soft);line-height:1.7;color:var(--exam-text);overflow-wrap:anywhere}.mark-result:empty{display:none}.exam-complete-banner{margin:0 0 16px;padding:12px 14px;border-radius:12px;background:var(--exam-purple-soft);color:var(--exam-purple);font-size:12px;font-weight:800}.exam-answer{min-height:260px!important}.exam-submit-row{display:flex;justify-content:flex-end;gap:10px;margin-top:10px}.exam-disabled{opacity:.65;cursor:not-allowed!important}
+    @media(max-width:900px){.exam-layout{grid-template-columns:1fr}.exam-rules{order:-1}.exam-rules ul{margin-bottom:0}.tool-hero{align-items:flex-start}}
+    @media(max-width:600px){.exam-card{padding:16px;border-radius:16px}.exam-timer{font-size:34px}.tool-shell{padding-left:12px!important;padding-right:12px!important}.exam-controls{align-items:flex-start}.exam-submit-row{justify-content:stretch}.exam-submit-row button{width:100%}}
+  </style>
+</head>
+<body class="tool-page">
+<div id="site-navbar"></div>
+<main class="tool-shell">
+  <div class="tool-hero"><div><span class="tool-eyebrow">PRO EXAM MODE</span><h1>Practise under real conditions.</h1><p>Set the question, start the clock, and submit only after the timed attempt is complete.</p></div><button class="tool-secondary" id="focusModeBtn" type="button">← Focus Mode</button></div>
+  <div id="examLock" class="exam-card exam-lock" hidden><span class="pro-lock-chip">NOVEXA PRO</span><h2>Exam Mode is a Pro feature.</h2><p>Run timed practice without AI assistance, then receive an estimated mark, feedback, and weak-topic analysis.</p><button id="unlockExam" class="tool-primary" type="button">Unlock Exam Mode</button></div>
+  <div id="examApp" class="exam-layout" hidden>
+    <section class="exam-card">
+      <div class="exam-setup"><h2>Set up your attempt</h2><form id="setupForm" class="exam-form">
+        <label>Subject<select id="examSubject"><option>Mathematics</option><option>Physics</option><option>Chemistry</option><option>Biology</option><option>Economics</option><option>Business</option><option>English</option></select></label>
+        <label>Duration<select id="examDuration"><option value="15">15 minutes</option><option value="30" selected>30 minutes</option><option value="60">60 minutes</option><option value="90">90 minutes</option></select></label>
+        <label>Question or paper prompt<textarea id="examQuestion" required placeholder="Paste the question or section you want to attempt."></textarea></label>
+        <label>Mark scheme (optional)<textarea id="examMarkScheme" placeholder="Paste the mark scheme if you have it. It stays hidden until submission."></textarea></label>
+        <button class="tool-primary" type="submit">Start exam</button>
+      </form></div>
+      <div class="exam-work">
+        <div id="examCompleteBanner" class="exam-complete-banner" hidden></div>
+        <div class="exam-controls"><span id="examTimer" class="exam-timer">30:00</span><span id="examState" class="exam-state">AI assistance paused</span></div>
+        <h2 id="workSubject"></h2><div id="workQuestion" class="exam-question"></div>
+        <label class="exam-form"><span>Write your answer</span><textarea id="examAnswer" class="exam-answer" placeholder="Show your full working and final answer here."></textarea></label>
+        <div class="exam-submit-row"><button id="finishExam" class="tool-primary" type="button">Submit attempt</button></div>
+        <div id="markResult" class="mark-result" aria-live="polite"></div>
+      </div>
+    </section>
+    <aside class="exam-card exam-rules"><h2>Exam rules</h2><p>During the attempt, Novexa does not provide hints or answers. Your question and answer are sent for AI marking only after you submit.</p><ul><li>Use the full time if you can.</li><li>Show your method and units.</li><li>Review your answer before submitting.</li><li>If time reaches zero, Novexa automatically locks the answer and submits it for marking.</li></ul></aside>
+  </div>
+</main>
+<script src="../vendor/supabase.min.js"></script><script src="../js/supabase.js"></script><script src="../js/auth.js"></script><script>window.NovexaAuth.requireAuth({ returnTo: window.location.href });</script><script src="../js/components/navbar.js"></script>
+<script>
+(async()=>{
+  const s=window.supabaseClient;if(!s){location.replace('login.html');return}
+  const auth=await s.auth.getUser();if(!auth.data?.user){location.replace('login.html');return}
+  const apiBase=((location.hostname==='localhost'||location.hostname==='127.0.0.1')&&location.port!=='3000')?'http://localhost:3000':'';
+  const session=(await s.auth.getSession()).data.session;if(!session?.access_token){location.replace('login.html');return}
+  let plan='basic';
+  try{const r=await window.NovexaAuth.authorizedFetch(`${apiBase}/api/billing/status`,{cache:'no-store'});const d=await r.json().catch(()=>({}));if(r.ok)plan=d.plan==='pro'?'pro':'basic'}catch(error){console.warn('[Exam Mode] plan check failed',error)}
+  if(plan!=='pro'){try{const p=(await s.from('profiles').select('plan,trial_ends_at').eq('user_id',auth.data.user.id).maybeSingle()).data;plan=p?.plan==='pro'?'pro':'basic'}catch(_){}}
+  const examLock=document.getElementById('examLock'),examApp=document.getElementById('examApp');
+  if(plan!=='pro'){examLock.hidden=false;document.getElementById('unlockExam').onclick=()=>location.href='payment.html?feature=Exam%20Mode';return}
+  examApp.hidden=false;
+  const form=document.getElementById('setupForm'),timer=document.getElementById('examTimer'),state=document.getElementById('examState'),finishButton=document.getElementById('finishExam'),answerEl=document.getElementById('examAnswer'),result=document.getElementById('markResult'),banner=document.getElementById('examCompleteBanner');
+  let remaining=1800,interval=null,running=false,submitted=false,question='',markScheme='',subject='';
+  const fmt=n=>`${String(Math.floor(Math.max(0,n)/60)).padStart(2,'0')}:${String(Math.max(0,n)%60).padStart(2,'0')}`;
+  const stop=()=>{if(interval){clearInterval(interval);interval=null}};
+  const setTimer=()=>{timer.textContent=fmt(remaining);timer.classList.toggle('warning',remaining>0&&remaining<=60);timer.classList.toggle('expired',remaining<=0)};
+  const lockAttempt=()=>{running=false;stop();answerEl.readOnly=true;finishButton.disabled=true;finishButton.classList.add('exam-disabled');state.textContent=remaining<=0?'Time is up · submitting':'Attempt submitted';banner.hidden=false;banner.textContent=remaining<=0?'Time is up. Your answer has been locked and sent for marking.':'Your timed attempt is locked. Novexa is marking it now.';document.body.classList.remove('exam-running');document.body.classList.add('exam-completed');};
+  async function mark(){
+    const answer=answerEl.value.trim();
+    if(!answer){result.textContent='Please write an answer before submitting.';answerEl.readOnly=false;finishButton.disabled=false;finishButton.classList.remove('exam-disabled');running=false;return}
+    result.textContent='Marking your attempt…';
+    try{
+      const prompt=`Mark this timed exam attempt. Subject: ${subject}\nQuestion:\n${question}\nMark scheme:\n${markScheme||'No mark scheme supplied; use a clearly labelled estimated rubric.'}\nStudent answer:\n${answer}`;
+      const response=await fetch(`${apiBase}/api/ai/jobs`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:`Bearer ${session.access_token}`},body:JSON.stringify({prompt,mode:'exam',subject,action:'mark',history:[]})});
+      const queued=await response.json().catch(()=>({}));if(!response.ok)throw new Error(queued.error||'Could not start marking. Please try again.');
+      const deadline=Date.now()+15*60*1000;let data=null;
+      while(Date.now()<deadline){const poll=await fetch(`${apiBase}/api/ai/jobs/${encodeURIComponent(queued.jobId)}`,{cache:'no-store',headers:{Authorization:`Bearer ${session.access_token}`}});const status=await poll.json().catch(()=>({}));if(!poll.ok)throw new Error(status.error||'Could not read the marking job.');if(status.status==='completed'){data=status.result;break}if(status.status==='failed')throw new Error(status.result?.error||'The marking job failed.');result.textContent='Marking your attempt in the background…';await new Promise(resolve=>setTimeout(resolve,1200))}
+      if(!data)throw new Error('Marking is still running. Return to Exam Mode shortly to view the result.');
+      const text=String(data.answer||data.message||'No marking feedback was returned.');result.textContent=text;
+      try{await s.from('paper_attempts').insert({user_id:auth.data.user.id,subject,score:null,max_score:null,topics:[],weak_topics:[],completed_at:new Date().toISOString()})}catch(saveError){console.warn('[Exam Mode] attempt history could not be saved:',saveError.message)}
+    }catch(error){result.textContent=`Marking could not be completed: ${error.message}`;finishButton.disabled=false;finishButton.classList.remove('exam-disabled');answerEl.readOnly=false}
+  }
+  async function submitAttempt(auto=false){if(submitted)return;const answer=answerEl.value.trim();if(!answer){if(auto){result.textContent='Time is up, but no answer was entered. Nothing was sent for marking.';lockAttempt();submitted=true;return}alert('Write an answer before submitting.');return}submitted=true;lockAttempt();await mark()}
+  form.onsubmit=e=>{e.preventDefault();if(running)return;question=document.getElementById('examQuestion').value.trim();markScheme=document.getElementById('examMarkScheme').value.trim();subject=document.getElementById('examSubject').value;remaining=Number(document.getElementById('examDuration').value)*60;document.getElementById('workSubject').textContent=subject;document.getElementById('workQuestion').textContent=question;answerEl.value='';answerEl.readOnly=false;result.textContent='';banner.hidden=true;submitted=false;running=true;finishButton.disabled=false;finishButton.classList.remove('exam-disabled');state.textContent='AI assistance paused';setTimer();document.body.classList.remove('exam-completed');document.body.classList.add('exam-running');stop();interval=setInterval(()=>{remaining-=1;setTimer();if(remaining<=0){remaining=0;setTimer();submitAttempt(true)}},1000)};
+  finishButton.onclick=()=>submitAttempt(false);document.getElementById('focusModeBtn').onclick=()=>location.href='focus.html';
+})();
+</script></body></html>

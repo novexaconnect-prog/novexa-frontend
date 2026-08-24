@@ -1,0 +1,11 @@
+<!doctype html><meta charset="utf-8"><title>Novexa V43.67 readability smoke</title>
+<script src="js/utils/math-format.js"></script>
+<pre id="out"></pre>
+<script>
+const cases = [
+  'Method 2: (Taking (log_7) of Both Sides)',
+  '5. **Substitute and apply the Quotient Law** (log_7 A - log_7 B = log_7 (A/B)):',
+  '- **Recap:** When asked for an answer in the form (x = log_a b), isolate the exponential term first.'
+];
+document.getElementById('out').textContent = cases.map(x => window.NovexaMath.prepareMarkdown(x)).join('\n---\n');
+</script>

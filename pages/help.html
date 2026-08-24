@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <link rel="icon" href="../assets/images/novexa-tab-logo.png?v=43.41" type="image/png"><link rel="apple-touch-icon" href="../assets/images/novexa-tab-logo.png?v=43.41">
+  <script src="../js/theme-boot.js"></script><script src="../js/runtime-config.js"></script>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Help & Support — Novexa</title>
+  <link rel="stylesheet" href="../css/global.css"><link rel="stylesheet" href="../css/components.css"><link rel="stylesheet" href="../css/tool-pages.css">
+  <script src="../vendor/lucide.min.js"></script>
+</head>
+<body class="tool-page help-page">
+  <div id="site-navbar"></div>
+  <main class="tool-shell">
+    <div class="tool-hero"><div><span class="tool-eyebrow">SUPPORT</span><h1>Help &amp; Support</h1><p>Get help quickly and help us improve Novexa for students.</p></div><button class="tool-secondary" onclick="location.href='dashboard.html'">← Dashboard</button></div>
+
+    <section class="tool-card feedback-card">
+      <div class="feedback-icon"><i data-lucide="heart-handshake"></i></div>
+      <div><span class="tool-eyebrow">YOUR FEEDBACK MATTERS</span><h2>Help us improve Novexa</h2><p class="tool-note">Have an idea, found a bug, or want to tell us what you think? Your feedback helps us improve Novexa for students.</p><a class="tool-primary feedback-button" href="https://forms.gle/ZciQqnX5Su1Q6Aq58" target="_blank" rel="noopener noreferrer"><i data-lucide="clipboard-pen-line" width="15"></i> Send Feedback</a></div>
+    </section>
+
+    <div class="tool-card"><h2>AI is not responding</h2><p class="tool-note">Make sure the backend is running with <code>npm start</code> inside the backend folder and that your AI provider key is in <code>backend/.env</code>. If a response is still pending, keep the AI tab open; Novexa now continues active requests while the tab is in the background.</p></div>
+    <div class="tool-card"><h2>Google login</h2><p class="tool-note">In Supabase Authentication → Providers, Google must be enabled and the redirect URL must match the URL you use to run Novexa.</p></div>
+    <div class="tool-card support-footer"><h2>Need direct help?</h2><p class="tool-note">For an account or payment issue, include the page, the action you took, and the message you saw.</p><div class="support-actions"><a class="tool-secondary" href="mailto:support@novexa.app?subject=Novexa%20support">Contact support</a><a class="tool-link-button" href="https://forms.gle/ZciQqnX5Su1Q6Aq58" target="_blank" rel="noopener noreferrer"><i data-lucide="lightbulb" width="14"></i> Suggest an improvement</a></div></div>
+  </main>
+  <script src="../vendor/supabase.min.js"></script><script src="../js/supabase.js"></script><script src="../js/components/navbar.js"></script><script>lucide.createIcons();</script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <link rel="icon" href="../assets/images/novexa-tab-logo.png?v=43.41" type="image/png"><link rel="apple-touch-icon" href="../assets/images/novexa-tab-logo.png?v=43.41">
+  <script src="../js/theme-boot.js"></script><script src="../js/runtime-config.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Focus Mode — Novexa</title>
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/tool-pages.css">
+  <script src="../vendor/lucide.min.js"></script>
+  <style>
+    :root{--ink:#292c4b;--muted:#777c98;--line:#e7e3f1;--purple:#6843f5;--soft:#f7f5ff}
+    .focus-page{min-height:100vh;background:radial-gradient(circle at 14% 0%,rgba(112,76,247,.13),transparent 29%),linear-gradient(180deg,#fbfaff,#f6f7fc)}
+    .focus-shell{max-width:1120px;margin:auto;padding:30px 24px 70px}.focus-hero{display:flex;justify-content:space-between;gap:20px;align-items:flex-end;margin:18px 0 26px}.focus-kicker{display:inline-flex;align-items:center;gap:7px;color:var(--purple);font-size:11px;font-weight:900;letter-spacing:.14em}.focus-hero h1{margin:11px 0 10px;color:var(--ink);font-size:clamp(30px,4vw,48px);letter-spacing:-.055em;line-height:1}.focus-hero p{margin:0;color:var(--muted);line-height:1.65}.focus-layout{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(285px,.65fr);gap:16px;align-items:stretch}.focus-card,.focus-side-card{border:1px solid rgba(229,225,241,.9);background:rgba(255,255,255,.88);box-shadow:0 24px 65px rgba(55,38,130,.1);border-radius:24px}.focus-card{padding:25px;position:relative;overflow:hidden}.focus-card:before{content:"";position:absolute;width:310px;height:310px;border-radius:50%;top:-170px;left:-150px;background:radial-gradient(circle,rgba(113,77,245,.13),transparent 70%)}.focus-session-label{position:relative;display:flex;justify-content:space-between;gap:12px;align-items:center;color:var(--muted);font-size:11px;font-weight:850}.focus-session-label span:last-child{padding:7px 9px;border-radius:999px;background:#f0ebff;color:var(--purple)}.timer-wrap{position:relative;display:grid;place-items:center;margin:23px auto;width:min(360px,78vw);aspect-ratio:1}.timer-ring{position:absolute;inset:0;border-radius:50%;background:conic-gradient(var(--purple) var(--progress,0%),#eeeaf8 0);padding:10px;box-shadow:0 20px 50px rgba(104,67,245,.16)}.timer-ring:after{content:"";display:block;width:100%;height:100%;border-radius:50%;background:#fff}.timer-center{position:relative;z-index:1;text-align:center}.timer{font-size:clamp(62px,9vw,92px);font-weight:950;letter-spacing:-.08em;color:var(--ink);line-height:1}.timer-state{margin-top:10px;color:var(--muted);font-size:11px;font-weight:800}.timer-controls{display:flex;justify-content:center;gap:9px;flex-wrap:wrap;position:relative}.timer-controls button{display:inline-flex;align-items:center;gap:7px;padding:12px 15px;border-radius:12px;border:1px solid #ddd8eb;background:#fff;color:#5c607a;font-weight:850;cursor:pointer;transition:transform .17s ease,box-shadow .17s ease}.timer-controls button:hover{transform:translateY(-2px);box-shadow:0 9px 20px rgba(47,35,110,.08)}.timer-controls button:active{transform:scale(.97)}.timer-controls .start{border:0;background:linear-gradient(135deg,#6843f5,#8c60ff);color:#fff;box-shadow:0 12px 26px rgba(104,67,245,.24)}.timer-controls button:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none}.focus-note{text-align:center;margin:17px auto 0;color:#9194a9;font-size:11px;max-width:520px;line-height:1.55}.preset-row{display:flex;justify-content:center;gap:7px;flex-wrap:wrap;margin-top:18px}.preset-row button{border:1px solid #e3deef;background:#faf9ff;color:#77718e;border-radius:9px;padding:7px 10px;font-size:10px;font-weight:850;cursor:pointer}.preset-row button.active{background:#eee9ff;border-color:#cabdff;color:var(--purple)}.focus-side{display:grid;gap:16px}.focus-side-card{padding:20px}.side-title{display:flex;align-items:center;justify-content:space-between;gap:10px}.side-title h2{margin:0;color:var(--ink);font-size:16px}.side-title i{color:var(--purple)}.focus-big-stat{margin:18px 0 14px;display:flex;align-items:baseline;gap:8px}.focus-big-stat strong{font-size:42px;letter-spacing:-.07em;color:var(--ink)}.focus-big-stat span{color:var(--muted);font-size:12px;font-weight:800}.focus-progress{height:8px;border-radius:99px;background:#eeeaf7;overflow:hidden}.focus-progress span{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,#6843f5,#a37bff);transition:width .4s ease}    .focus-side-card p{margin:9px 0 0;color:#9295aa;font-size:11px;line-height:1.5}.pro-streak-card{background:linear-gradient(145deg,#fbf9ff,#fff)}.pro-streak-card.is-pro{border-color:#d7c9ff;box-shadow:0 20px 55px rgba(104,67,245,.12)}.pro-streak-card p a{color:#6843f5;font-weight:900}.pro-streak-card .focus-cta{margin-top:13px}.focus-mini-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin-top:16px}.focus-mini{padding:12px;border-radius:13px;background:#faf9ff;border:1px solid #eeeaf5}.focus-mini small{display:block;color:#9a9db1;font-size:10px;font-weight:800}.focus-mini b{display:block;margin-top:6px;color:var(--ink);font-size:18px}.focus-streak{display:flex;align-items:center;gap:13px}.focus-flame{display:grid;place-items:center;width:45px;height:45px;border-radius:14px;background:#fff2db;color:#ea8b34}.focus-streak strong{display:block;color:var(--ink);font-size:24px;letter-spacing:-.04em}.focus-streak span{display:block;color:var(--muted);font-size:11px;margin-top:3px}.focus-history{margin-top:16px}.focus-history h2{margin:0;color:var(--ink);font-size:16px}.session-list{display:grid;gap:9px;margin-top:12px}.session-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:9px 0;border-bottom:1px solid #f0edf6}.session-row:last-child{border:0}.session-row strong{display:block;color:#555977;font-size:11px}.session-row span{color:#9a9db1;font-size:10px}.session-row b{color:var(--purple);font-size:12px}.focus-empty{padding:16px 0;color:#9a9db1;font-size:11px}.focus-cta{display:inline-flex;align-items:center;gap:7px;color:#6843f5;font-size:11px;font-weight:900;text-decoration:none;margin-top:13px}.focus-cta:hover{text-decoration:underline}@media(max-width:850px){.focus-layout{grid-template-columns:1fr}.focus-side{grid-template-columns:1fr 1fr}.focus-history{grid-column:1/-1}}@media(max-width:620px){.focus-shell{padding:22px 15px 50px}.focus-hero{display:block}.focus-hero .tool-secondary{margin-top:17px}.focus-card{padding:17px}.focus-side{grid-template-columns:1fr}.focus-history{grid-column:auto}.timer-wrap{width:min(310px,82vw)}}:root[data-theme="dark"] .focus-page{--ink:#f5f3ff;--muted:#a7abc2;--line:#29263f;--soft:#171629;background:radial-gradient(circle at 14% 0%,rgba(112,76,247,.18),transparent 29%),linear-gradient(180deg,#070812,#0b0d18)}
+:root[data-theme="dark"] .focus-hero h1{color:#f7f5ff}
+:root[data-theme="dark"] .focus-hero p,:root[data-theme="dark"] .focus-session-label,:root[data-theme="dark"] .focus-note{color:#a7abc2}
+:root[data-theme="dark"] .focus-card,:root[data-theme="dark"] .focus-side-card{background:#101321;border-color:rgba(255,255,255,.1);box-shadow:0 24px 65px rgba(0,0,0,.28)}
+:root[data-theme="dark"] .focus-card:before{background:radial-gradient(circle,rgba(113,77,245,.2),transparent 70%)}
+:root[data-theme="dark"] .focus-session-label span:last-child{background:#211b3e;color:#c6b4ff}
+:root[data-theme="dark"] .timer-ring{background:conic-gradient(#8b6bff var(--progress,0%),#29243f 0);box-shadow:0 20px 50px rgba(104,67,245,.24)}
+:root[data-theme="dark"] .timer-ring:after{background:#0a0b14}
+:root[data-theme="dark"] .timer{color:#f7f5ff}
+:root[data-theme="dark"] .timer-state{color:#a7abc2}
+:root[data-theme="dark"] .timer-controls button{background:#0a0b14;border-color:rgba(255,255,255,.1);color:#d7d4e7}
+:root[data-theme="dark"] .timer-controls button:hover{box-shadow:0 10px 24px rgba(0,0,0,.28)}
+:root[data-theme="dark"] .timer-controls .start{background:linear-gradient(135deg,#6843f5,#8c60ff);color:#fff;border-color:transparent}
+:root[data-theme="dark"] .preset-row button{background:#0a0b14;border-color:rgba(255,255,255,.1);color:#a7abc2}
+:root[data-theme="dark"] .preset-row button.active{background:#2b2250;border-color:#8063e9;color:#d4c5ff}
+:root[data-theme="dark"] .side-title h2,:root[data-theme="dark"] .focus-big-stat strong,:root[data-theme="dark"] .focus-streak strong,:root[data-theme="dark"] .focus-mini b,:root[data-theme="dark"] .focus-history h2{color:#f3f1ff}
+:root[data-theme="dark"] .side-title i,:root[data-theme="dark"] .focus-cta{color:#b9a2ff}
+:root[data-theme="dark"] .focus-big-stat span,:root[data-theme="dark"] .focus-side-card p,:root[data-theme="dark"] .focus-streak span,:root[data-theme="dark"] .focus-empty{color:#a7abc2}
+:root[data-theme="dark"] .focus-progress{background:#29243f}
+:root[data-theme="dark"] .focus-mini{background:#0a0b14;border-color:rgba(255,255,255,.08)}
+:root[data-theme="dark"] .focus-mini small,:root[data-theme="dark"] .session-row span{color:#858aa5}
+:root[data-theme="dark"] .focus-flame{background:#0a0b14;color:#b9a2ff;border:1px solid rgba(255,255,255,.05);box-shadow:inset 0 1px 1px rgba(255,255,255,.02)}
+:root[data-theme="dark"] .focus-flame svg{width:19px;height:19px;stroke-width:1.8;color:#b9a2ff}
+:root[data-theme="dark"] .session-row{border-bottom-color:rgba(255,255,255,.08)}
+:root[data-theme="dark"] .session-row strong{color:#d4d1e4}
+:root[data-theme="dark"] .session-row b{color:#b9a2ff}
+:root[data-theme="dark"] .pro-streak-card{background:linear-gradient(145deg,#17152b,#101321)}
+:root[data-theme="dark"] .pro-streak-card.is-pro{border-color:#5f47a7;box-shadow:0 20px 55px rgba(104,67,245,.2)}
+:root[data-theme="dark"] .pro-streak-card p a{color:#c2adff}
+.focus-streak .focus-flame{display:grid !important;place-items:center;align-items:center;justify-items:center;flex:0 0 45px;line-height:1}
+.focus-streak .focus-flame svg{display:block;margin:auto}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+  </style>
+</head>
+<body class="tool-page focus-page">
+  <div id="site-navbar"></div>
+  <main class="focus-shell">
+    <section class="focus-hero"><div><span class="focus-kicker"><i data-lucide="timer" width="14"></i> FOCUS MODE</span><h1>Deep work, without distractions.</h1><p>Use focused sessions to turn small blocks of time into a visible study streak.</p></div><button class="tool-secondary" onclick="location.href='dashboard.html'"><i data-lucide="arrow-left" width="14"></i> Dashboard</button></section>
+    <section class="focus-layout">
+      <div class="focus-card">
+        <div class="focus-session-label"><span id="session-label">Ready when you are</span><span id="session-badge">25 min session</span></div>
+        <div class="timer-wrap"><div id="timer-ring" class="timer-ring" style="--progress:0%"></div><div class="timer-center"><div id="timer" class="timer">25:00</div><div id="timer-state" class="timer-state">Your next focused block</div></div></div>
+        <div class="timer-controls"><button class="start" id="start"><i data-lucide="play" width="15"></i> Start session</button><button id="pause"><i data-lucide="pause" width="15"></i> Pause</button><button id="reset"><i data-lucide="rotate-ccw" width="15"></i> Reset</button><button id="full"><i data-lucide="maximize-2" width="15"></i> Fullscreen</button><button id="ambient"><i data-lucide="volume-2" width="15"></i> Ambient</button></div>
+        <p class="focus-note">Only completed sessions are added to your private study analytics. You can pause or reset at any time.</p>
+        <div class="preset-row" aria-label="Session length"><button data-minutes="25" class="active">25 min</button><button data-minutes="50">50 min</button><button data-minutes="90">90 min</button></div>
+      </div>
+      <aside class="focus-side">
+        <div class="focus-side-card"><div class="side-title"><h2>Weekly performance</h2><i data-lucide="activity" width="17"></i></div><div class="focus-big-stat"><strong id="score">0%</strong><span>of 150 min goal</span></div><div class="focus-progress"><span id="score-bar" style="width:0%"></span></div><p id="score-note">Complete a focus session to start building your weekly score.</p><div class="focus-mini-grid"><div class="focus-mini"><small>TODAY</small><b id="today">0m</b></div><div class="focus-mini"><small>THIS WEEK</small><b id="week">0m</b></div></div></div>
+        <div class="focus-side-card"><div class="focus-streak"><span class="focus-flame"><i data-lucide="flame" width="21"></i></span><div><strong id="streak">0 days</strong><span id="streak-note">Your focus streak starts today.</span></div></div><div class="focus-mini-grid"><div class="focus-mini"><small>SESSIONS</small><b id="sessions">0</b></div><div class="focus-mini"><small>AVERAGE</small><b id="average">0m</b></div></div><a class="focus-cta" href="dashboard.html"><i data-lucide="bar-chart-3" width="14"></i> View your study dashboard</a></div>
+        <div class="focus-side-card focus-history"><div class="side-title"><h2>Recent sessions</h2><i data-lucide="history" width="17"></i></div><div id="session-list" class="session-list"><div class="focus-empty">Loading your sessions…</div></div></div>
+<p id="proStreakCopy">Streak freezes, weekly challenges, XP multipliers and achievement badges.</p><div class="focus-mini-grid"><div class="focus-mini"><small>FREEZE</small><b id="freezeCount">—</b></div><div class="focus-mini"><small>XP MULTIPLIER</small><b id="xpMultiplier">—</b></div></div><a id="examModeLink" class="focus-cta" href="exam.html"><i data-lucide="timer-reset" width="14"></i> Start Exam Mode</a></div>
+      </aside>
+    </section>
+  </main>
+  <script src="../vendor/supabase.min.js"></script><script src="../js/supabase.js"></script><script src="../js/auth.js"></script><script src="../js/focus-manager.js"></script><script src="../js/components/navbar.js"></script><script src="../js/pages/focus.js"></script><script>lucide.createIcons();</script>
+</body>
+</html>
