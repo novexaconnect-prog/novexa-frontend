@@ -38,7 +38,10 @@
   function showPaperViewer(fileUrl, title, context = {}) {
     if (!viewerModal || !viewerFrame || !fileUrl) return false;
     const isProxyable = /^(?:https?:\/\/)?(?:www\.)?(?:paperlords\.org|drive\.google\.com)\//i.test(String(fileUrl));
-    const embeddedFile = isProxyable ? `/api/papers/pdf?url=${encodeURIComponent(fileUrl)}` : fileUrl;
+    const backendApiBase = String(window.NOVEXA_API_BASE || '').trim().replace(/\/$/, '');
+    const embeddedFile = isProxyable
+      ? `${backendApiBase ? `${backendApiBase}/api/papers/pdf?url=` : '/api/papers/pdf?url='}${encodeURIComponent(fileUrl)}`
+      : fileUrl;
     const viewerParams = new URLSearchParams({embedded:'1',file:embeddedFile,title:title || 'Past paper',subject:context.subject || 'General',board:context.board || 'Novexa Archive',year:String(context.year || ''),session:context.session || '',paper:context.paper || title || 'Paper',type:context.type || 'Paper',v:'20260814-paper-ai'});const viewerUrl = `paper.html?${viewerParams.toString()}`;
     viewerTitle.textContent = title || 'Past paper';
     viewerLoading.hidden = false;
@@ -64,7 +67,10 @@
     if (!fileUrl) return;
     if (download) {
       const isProxyable = /^(?:https?:\/\/)?(?:www\.)?(?:paperlords\.org|drive\.google\.com)\//i.test(String(fileUrl));
-      const href = isProxyable ? `/api/papers/pdf?download=1&url=${encodeURIComponent(fileUrl)}` : driveDownloadUrl(fileUrl);
+      const backendApiBase = String(window.NOVEXA_API_BASE || '').trim().replace(/\/$/, '');
+      const href = isProxyable
+        ? `${backendApiBase ? `${backendApiBase}/api/papers/pdf?download=1&url=` : '/api/papers/pdf?download=1&url='}${encodeURIComponent(fileUrl)}`
+        : driveDownloadUrl(fileUrl);
       const link = document.createElement('a');
       link.href = href; link.target = '_blank'; link.rel = 'noopener noreferrer';
       link.download = title || 'Novexa Paper';
