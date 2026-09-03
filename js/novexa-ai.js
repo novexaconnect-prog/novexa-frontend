@@ -1951,7 +1951,7 @@
       if (data.status === 'completed') return data.result || {};
       if (data.status === 'failed') throw new Error(data.result?.error || 'The AI job failed.');
       if (state.stopRequested) { const e = new Error('Generation detached. Novexa will keep working in the background.'); e.name = 'AbortError'; throw e; }
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      await new Promise(resolve => setTimeout(resolve, 250));
     }
     throw new Error('The AI request is still running in the background. Return to Novexa AI shortly to retrieve it.');
   }
@@ -1970,7 +1970,7 @@
       if (data.status === 'completed') return data.result || {};
       if (data.status === 'failed') throw new Error(data.result?.error || 'The AI job failed.');
       if (state.stopRequested) { const e = new Error('Generation detached. Novexa will keep working in the background.'); e.name = 'AbortError'; throw e; }
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      await new Promise(resolve => setTimeout(resolve, 250));
     }
     throw new Error('The AI request took too long. It is still running on Novexa; return to this chat shortly to retrieve it.');
   }
@@ -1985,7 +1985,6 @@
     const text = String(fullText || '').trim();
     const autoFollow = chatThread ? (chatThread.scrollHeight - chatThread.scrollTop - chatThread.clientHeight < 140) : false;
     if (!bubble) return Promise.resolve();
-    bubble.classList.add('is-streaming');
     const content = bubble.querySelector('.assistant-content') || bubble;
     content.dataset.novexaRawText = text;
     if (!text) {
@@ -1993,36 +1992,14 @@
       bubble.classList.remove('is-streaming');
       return Promise.resolve();
     }
-
-    // Stream plain text first. Never run MathJax against an incomplete LaTeX
-    // expression: doing that while tokens are arriving was the source of the
-    // broken/overlapping equations in the previous build.
-    content.innerHTML = '<div class="streaming-text" aria-live="polite"></div>';
-    const stream = content.querySelector('.streaming-text');
-    const total = text.length;
-    const chunkSize = Math.max(14, Math.min(90, Math.ceil(total / 80)));
-    let shown = 0;
-
-    return new Promise(resolve => {
-      const tick = () => {
-        shown = Math.min(total, shown + chunkSize);
-        stream.textContent = text.slice(0, shown);
-        if (autoFollow) chatThread.scrollTop = chatThread.scrollHeight;
-        if (shown < total) {
-          window.setTimeout(tick, 10);
-          return;
-        }
-
-        // Only after the complete answer is present do we parse Markdown and
-        // typeset mathematics. This guarantees balanced delimiters.
-        hardRenderAssistantContent(content, text);
-        bubble.classList.remove('is-streaming');
-        typesetMath(bubble);
-        if (autoFollow) chatThread.scrollTop = chatThread.scrollHeight;
-        resolve();
-      };
-      tick();
-    });
+    // Do not simulate typing after the server has already generated the answer.
+    // Render the complete response immediately, while preserving the hardened
+    // Markdown/LaTeX sanitization and MathJax pipeline.
+    hardRenderAssistantContent(content, text);
+    bubble.classList.remove('is-streaming');
+    typesetMath(bubble);
+    if (autoFollow) chatThread.scrollTop = chatThread.scrollHeight;
+    return Promise.resolve();
   }
 
   function revealPartialPaperProgress(bubble, progress) {
@@ -2235,36 +2212,29 @@
         }
         localStorage.removeItem(`novexa_ai_pending_job_${state.user.id}`);
       } else {
-        // Every normal AI request is a durable server-side job. Navigation,
-        // refreshes and tab switches no longer cancel the model generation.
-        const jobResponse = await authenticatedFetch(`${apiBase}/api/ai/jobs`, {
-          method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(jobPayload), signal:state.abortController.signal
+        // Fast foreground path: normal Novexa AI should not pay the extra
+        // create-job + 1s-poll cycle. The backend keeps the durable queue as a
+        // fallback when capacity protection is actually needed.
+        const directResponse = await authenticatedFetch(`${apiBase}/api/ai`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ ...jobPayload, fastPath: true }),
+          signal: state.abortController.signal
         });
-        const jobData = await jobResponse.json().catch(()=>({}));
-        if(!jobResponse.ok){ if(jobResponse.status===401) throw new Error(sessionFailureMessage()); throw new Error(jobData.error||`Could not start the AI job (${jobResponse.status})`); }
-        const durableJobId=jobData.jobId;
-        if(!durableJobId) throw new Error('Novexa could not start the background AI job.');
-        localStorage.setItem(`novexa_ai_pending_job_${state.user.id}`,JSON.stringify({jobId:durableJobId,jobKind:'ai',createdAt:Date.now(),prompt:message,action,subject:state.subject}));
-        aiStatus.textContent=`${state.pet?.name||'Novexa'} is working in the background…`;
-        try {
-          data=await pollBackgroundJob(durableJobId);
-        } catch (jobError) {
-          // A durable job can fail transiently when the worker/provider pool
-          // restarts. Do not strand the student behind a generic error bubble.
-          // Give the foreground AI endpoint one authenticated recovery attempt.
-          const retryMessage = String(jobError?.message || '');
-          const transient = /temporarily|available|provider|busy|retry|background ai job|AI job failed/i.test(retryMessage) || jobError?.code === 'AI_PROVIDER_POOL_UNAVAILABLE';
-          if (!transient) throw jobError;
-          aiStatus.textContent = `${state.pet?.name || 'Novexa'} is retrying through the live AI route…`;
-          const direct = await authenticatedFetch(`${apiBase}/api/ai`, {
-            method:'POST', headers:{'Content-Type':'application/json'},
-            body:JSON.stringify(jobPayload), signal:state.abortController.signal
-          });
-          const directData = await direct.json().catch(()=>({}));
-          if (!direct.ok) throw new Error(directData.error || 'Nova could not complete that request right now.');
-          data = directData.jobId ? await pollBackgroundJob(directData.jobId) : directData;
+        const directData = await directResponse.json().catch(() => ({}));
+        if (!directResponse.ok) {
+          if (directResponse.status === 401) throw new Error(sessionFailureMessage());
+          throw new Error(directData.error || `Nova could not complete that request right now.`);
         }
-        localStorage.removeItem(`novexa_ai_pending_job_${state.user.id}`);
+        // Capacity protection may still return a durable job. Only in that case
+        // fall back to polling; healthy foreground generations remain one request.
+        if (directData.jobId) {
+          localStorage.setItem(`novexa_ai_pending_job_${state.user.id}`, JSON.stringify({ jobId: directData.jobId, jobKind: 'ai', createdAt: Date.now(), prompt: message, action, subject: state.subject }));
+          data = await pollBackgroundJob(directData.jobId);
+          localStorage.removeItem(`novexa_ai_pending_job_${state.user.id}`);
+        } else {
+          data = directData;
+        }
       }
       if (jobKind === 'paper' && data?.message && !data.answer) data.answer = data.message;
       typing.remove();
